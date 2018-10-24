@@ -96,4 +96,9 @@ public class Person
 		return "Person [lastname=" + lastname + ", firstname=" + firstname + ", height=" + height + ", gender=" + gender
 				+ "]";
 	}
+	public String sayHello()
+	{
+		return "Hello, my name is " + this.firstname + " " + this.lastname;
+	}
+	
 }

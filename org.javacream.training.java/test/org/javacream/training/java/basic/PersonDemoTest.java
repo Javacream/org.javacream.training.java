@@ -35,6 +35,28 @@ public class PersonDemoTest
 		Assert.assertFalse((a1 == a2));
 		Assert.assertFalse((a1.equals(a2)));
 
+		Student s = new Student("Einstein", "Albert", 171, 'm', "LMU");
+			
+		System.out.println(p1.sayHello());
+		System.out.println(s.sayHello());
+		printOut(p1);
+		printOut(s);
 		
+		Integer toPrint =42;
+		printOut(toPrint);
+		Assert.assertTrue(42 == toPrint);
 	}
+	
+	
+	private void printOut(Person p) {
+		System.out.println(p.getClass().getName());
+		System.out.println("PRINTOUT: " + p.sayHello());
+		p = new Person("Meier", "Hans", 188, 'f');
+	}
+
+	private void printOut(Integer i) {
+		System.out.println("PRINTOUT: " + i);
+		i = 43;
+	}
+
 }
