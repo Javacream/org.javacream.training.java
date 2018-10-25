@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import org.javacream.training.java.oop.orchester.Instrument;
-import org.javacream.training.java.oop.orchester.Orchester;
+import org.javacream.training.java.oop.orchester.api.Instrument;
+import org.javacream.training.java.oop.orchester.api.Orchester;
 
 public class InstrumentsFromPropertiesReader
 {

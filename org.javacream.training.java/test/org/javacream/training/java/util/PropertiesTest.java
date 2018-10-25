@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.javacream.training.java.oop.orchester.Instrument;
+import org.javacream.training.java.oop.orchester.api.Instrument;
 import org.junit.Test;
 
 public class PropertiesTest

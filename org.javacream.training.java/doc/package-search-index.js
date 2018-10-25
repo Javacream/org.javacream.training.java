@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"org.javacream.training.java.basic"},{"l":"org.javacream.training.java.oop.orchester.api"},{"l":"org.javacream.training.java.oop.orchester.helper"},{"l":"org.javacream.training.java.util"}]

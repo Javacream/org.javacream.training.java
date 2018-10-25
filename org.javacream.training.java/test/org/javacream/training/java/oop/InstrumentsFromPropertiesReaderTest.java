@@ -2,7 +2,7 @@ package org.javacream.training.java.oop;
 
 import java.util.List;
 
-import org.javacream.training.java.oop.orchester.Instrument;
+import org.javacream.training.java.oop.orchester.api.Instrument;
 import org.javacream.training.java.oop.orchester.helper.InstrumentsFromPropertiesReader;
 import org.junit.Assert;
 import org.junit.Test;
