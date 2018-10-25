@@ -15,6 +15,8 @@ public abstract class Tool
 		toolHelper = new ToolHelper();
 		inventory = toolHelper.createInventoryNumber();
 		toolStatus = ToolStatus.OK;
+		attached = false;
+		
 	}
 	public Long getInventory()
 	{
@@ -61,4 +63,36 @@ public abstract class Tool
 	}
 	 
 	public abstract void doWork();
+	@Override
+	public String toString()
+	{
+		return "Tool [toolHelper=" + toolHelper + ", inventory=" + inventory + ", description=" + description
+				+ ", attached=" + attached + ", coordinate=" + coordinate + ", toolStatus=" + toolStatus + "]";
+	}
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((inventory == null) ? 0 : inventory.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tool other = (Tool) obj;
+		if (inventory == null)
+		{
+			if (other.inventory != null)
+				return false;
+		} else if (!inventory.equals(other.inventory))
+			return false;
+		return true;
+	}
 }

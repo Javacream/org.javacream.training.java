@@ -4,7 +4,7 @@ public class Hammer extends Tool
 {
 
 	public Hammer() {
-		super("a screwdriver");
+		super("a hammer");
 	}
 
 	public Hammer(Long inventory, String description)

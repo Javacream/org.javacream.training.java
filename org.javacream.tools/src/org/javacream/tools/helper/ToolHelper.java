@@ -10,7 +10,7 @@ public class ToolHelper
 
 	public Long createInventoryNumber()
 	{
-		Double d = Math.random() * 10e6;
+		Double d = Math.abs(Math.random() * 10e12);
 		return d.longValue();
 	}
 
