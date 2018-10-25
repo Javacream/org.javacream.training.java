@@ -1,14 +1,18 @@
 package org.javacream.training.java.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class Collections
+public class CollectionsTest
 {
 
 	@Test public void iterationVariants(){
@@ -183,7 +187,24 @@ public class Collections
 		
 	}
 	
+	@Test public void listTypes() {
+		List<String> names = new ArrayList<String>();
+		List<String> names2 = new LinkedList<String>();
+		Set<String> names3 = new HashSet<String>();
+		printOut(names);
+		printOut(names2);
+		printOut(names3);
+		
+	}
+	
+
+	private void printOut(Collection<String> list) {
+		for (String element: list) {
+			//...
+		}
+	}
 }
+
 
 class CoordinateNoHash{
 	private int x, y, z;
