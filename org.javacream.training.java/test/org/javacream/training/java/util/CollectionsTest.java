@@ -196,11 +196,10 @@ public class CollectionsTest
 		printOut(names3);
 		
 	}
-	
 
 	private void printOut(Collection<String> list) {
 		for (String element: list) {
-			//...
+			System.out.println(element);
 		}
 	}
 }
