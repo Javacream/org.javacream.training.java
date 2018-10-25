@@ -10,7 +10,7 @@ public abstract class Tool
 	private Boolean attached;
 	private Coordinate coordinate;
 	private ToolStatus toolStatus;
-	
+	//ALWAYS!
 	{
 		toolHelper = new ToolHelper();
 		inventory = toolHelper.createInventoryNumber();
