@@ -1,6 +1,7 @@
 package org.javacream.training.java.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -136,10 +137,52 @@ public class Collections
 		Assert.assertEquals(1, set.size());
 	}
 	
-	@Test public void testStringIntegerMap() {
-		
+	@Test public void testIntegerStringMap() {
+		HashMap<Integer, String> postalCodes = new HashMap<Integer, String>();
+		postalCodes.put(81373, "München");
+		postalCodes.put(83607, "Holzkircha");
+		Assert.assertEquals(2, postalCodes.size());
+		Assert.assertEquals("Holzkircha", postalCodes.get(83607));
+		postalCodes.put(83607, "Holzkirchen");
+		Assert.assertEquals(2, postalCodes.size());
+		Assert.assertEquals("Holzkirchen", postalCodes.get(83607));
+		postalCodes.remove(83607);
+		Assert.assertEquals(1, postalCodes.size());
+		Assert.assertNull(postalCodes.get(83607));
+		for (Integer key: postalCodes.keySet()) {
+			System.out.println(postalCodes.get(key));
+		}
+	
+		HashMap<String, ArrayList<Integer>> reversePostalCodes = new HashMap<String, ArrayList<Integer>>();
+		//Add München PLZ, first...
+		//TODO: Hilfsfunktion?
+		ArrayList<Integer> postalCodesForCity = reversePostalCodes.get("München");
+		if (postalCodesForCity == null) {
+			postalCodesForCity = new ArrayList<Integer>();
+			reversePostalCodes.put("München", postalCodesForCity);
+		}
+		postalCodesForCity.add(81373);
 	}
 
+	@Test public void testCoordianteHashStringMap() {
+		HashMap<CoordinateHash, String> toolsInSpace = new HashMap<CoordinateHash, String>();
+		toolsInSpace.put(new CoordinateHash(1,2,3), "Schraubenzieher");
+		toolsInSpace.put(new CoordinateHash(1,2,4), "Hammer");
+		//...
+		Assert.assertEquals(toolsInSpace.get(new CoordinateHash(1,2,4)), "Hammer");
+	}
+	@Test public void testCoordianteNoHashStringMap() {
+		HashMap<CoordinateNoHash, String> toolsInSpace = new HashMap<CoordinateNoHash, String>();
+		CoordinateNoHash coordinate = new CoordinateNoHash(1,2,3);
+		toolsInSpace.put(coordinate, "Schraubenzieher");
+		
+		toolsInSpace.put(new CoordinateNoHash(1,2,4), "Hammer");
+		//...
+		Assert.assertEquals(toolsInSpace.get(new CoordinateNoHash(1,2,4)), null);
+		Assert.assertEquals(toolsInSpace.get(coordinate), "Schraubenzieher");
+		
+	}
+	
 }
 
 class CoordinateNoHash{
