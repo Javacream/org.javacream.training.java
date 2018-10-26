@@ -22,7 +22,7 @@ public class SimpleTcpServer
 
 	public SimpleTcpServer() throws Exception
 	{
-		executorService = Executors.newCachedThreadPool();
+		executorService = Executors.newFixedThreadPool(10);
 		final ServerSocket serverSocket = new ServerSocket(9999);
 		executorService.execute(new Runnable()
 		{
