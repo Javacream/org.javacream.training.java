@@ -6,9 +6,11 @@ public class Book {
 	private String title;
 	private int pages;
 	private double price;
+	private boolean available;
 	@Override
 	public String toString() {
-		return "Book [isbn=" + isbn + ", title=" + title + ", pages=" + pages + ", price=" + price + "]";
+		return "Book [isbn=" + isbn + ", title=" + title + ", pages=" + pages + ", price=" + price + ", available="
+				+ available + "]";
 	}
 	public Book(String isbn, String title) {
 		super();

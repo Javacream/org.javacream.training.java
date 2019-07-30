@@ -4,7 +4,7 @@ import org.javacream.training.java.publishing.api.types.Book;
 
 public interface BooksService {
 
-	void newBook(String isbn, String title);
+	String newBook(String title);
 
 	Book findBookByIsbn(String isbn);
 

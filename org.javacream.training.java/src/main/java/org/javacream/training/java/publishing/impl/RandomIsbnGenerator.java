@@ -6,9 +6,18 @@ import org.javacream.training.java.publishing.api.IsbnGenerator;
 
 public class RandomIsbnGenerator implements IsbnGenerator {
 	
-	private static final String PREFIX = "ISBN:";
-	private static final String SUFFIX = "-de";
+	private String prefix;
+	private String suffix;
 	private Random random;
+
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
+	}
+
+	public void setSuffix(String suffix) {
+		this.suffix = suffix;
+	}
+
 	
 	{
 		random = new Random(this.hashCode() + System.currentTimeMillis());
@@ -18,7 +27,7 @@ public class RandomIsbnGenerator implements IsbnGenerator {
 	public String next() {
 		int nextInt = random.nextInt();
 		int positivenextInt = Math.abs(nextInt);
-		return PREFIX + positivenextInt + SUFFIX;
+		return prefix + positivenextInt + suffix;
 	}
 
 }

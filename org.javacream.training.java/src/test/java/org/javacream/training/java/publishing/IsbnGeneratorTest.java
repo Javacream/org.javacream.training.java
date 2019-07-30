@@ -7,12 +7,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class IsbnGeneratorTest {
-
+	private final String TEST_PREFIX = "ISBN";
+	private final String TEST_SUFFIX = "-de";
 	private IsbnGenerator isbnGenerator;
 	
 	@Before
 	public void setUp() {
-		isbnGenerator = new RandomIsbnGenerator();
+		RandomIsbnGenerator randomIsbnGenerator = new RandomIsbnGenerator();
+		randomIsbnGenerator.setPrefix(TEST_PREFIX);
+		randomIsbnGenerator.setSuffix(TEST_SUFFIX);
+		isbnGenerator = randomIsbnGenerator;
 	}
 	
 	@Test
@@ -23,12 +27,12 @@ public class IsbnGeneratorTest {
 	@Test
 	public void generatedIsbnStartsWithIsbn() {
 		String isbn = isbnGenerator.next();
-		Assert.assertTrue(isbn.startsWith("ISBN:"));
+		Assert.assertTrue(isbn.startsWith(TEST_PREFIX));
 	}
 	@Test
 	public void generatedIsbnStartsWithDe() {
 		String isbn = isbnGenerator.next();
-		Assert.assertTrue(isbn.endsWith("-de"));
+		Assert.assertTrue(isbn.endsWith(TEST_SUFFIX));
 	}
 	@Test
 	public void generatedIsbnsAreUnique() {

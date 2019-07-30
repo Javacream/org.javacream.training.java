@@ -3,35 +3,46 @@ package org.javacream.training.java.publishing;
 import org.javacream.training.java.publishing.api.BooksService;
 import org.javacream.training.java.publishing.api.types.Book;
 import org.javacream.training.java.publishing.impl.MapBooksService;
+import org.javacream.training.java.publishing.impl.RandomIsbnGenerator;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class BooksServiceTest {
+	private BooksService booksService;
+	@Before public void init() {
+		MapBooksService mapBooksService = new MapBooksService();
+		RandomIsbnGenerator randomIsbnGenerator = new RandomIsbnGenerator();
+		mapBooksService.setIsbnGenerator(randomIsbnGenerator);
+		randomIsbnGenerator.setPrefix("ISBN:");
+		randomIsbnGenerator.setSuffix("-de");
+		
+		this.booksService = mapBooksService;
+	}
+	
+	@Test
+	public void testBooksSequence() {
+		// final String ISBN = "ISBN";
+		final String TITLE = "TITLE";
+		final double PRICE = 19.99;
+		final int PAGES = 200;
 
-@Test public void testBooksSequence() {
-	BooksService booksService = new MapBooksService();
-	final String ISBN = "ISBN";
-	final String TITLE = "TITLE";
-	final double PRICE = 19.99;
-	final int PAGES = 200;
-	
-	booksService.newBook(ISBN, TITLE);
-	Book book = booksService.findBookByIsbn(ISBN);
-	Assert.assertEquals(ISBN, book.getIsbn());
-	Assert.assertEquals(TITLE, book.getTitle());
-	book.setPages(PAGES);
-	book.setPrice(PRICE);
-	booksService.updateBook(book);
-	book = booksService.findBookByIsbn(ISBN);
-	Assert.assertEquals(ISBN, book.getIsbn());
-	Assert.assertEquals(TITLE, book.getTitle());
-	Assert.assertEquals(PAGES, book.getPages());
-	Assert.assertEquals(PRICE, book.getPrice(), 1e-9);
-	booksService.deleteBookByIsbn(ISBN);
-	book = booksService.findBookByIsbn(ISBN);
-	Assert.assertNull(book);
-	
-	
-}
-	
+		String isbn = booksService.newBook(TITLE);
+		Book book = booksService.findBookByIsbn(isbn);
+		Assert.assertEquals(isbn, book.getIsbn());
+		Assert.assertEquals(TITLE, book.getTitle());
+		book.setPages(PAGES);
+		book.setPrice(PRICE);
+		booksService.updateBook(book);
+		book = booksService.findBookByIsbn(isbn);
+		Assert.assertEquals(isbn, book.getIsbn());
+		Assert.assertEquals(TITLE, book.getTitle());
+		Assert.assertEquals(PAGES, book.getPages());
+		Assert.assertEquals(PRICE, book.getPrice(), 1e-9);
+		booksService.deleteBookByIsbn(isbn);
+		book = booksService.findBookByIsbn(isbn);
+		Assert.assertNull(book);
+
+	}
+
 }
