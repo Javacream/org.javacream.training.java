@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
+//@Scope("singleton"), default, other possible scope: prototype
 public class SimpleStoreService implements StoreService {
 
 	@Value("${defaultStock}")

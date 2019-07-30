@@ -2,8 +2,8 @@ package org.javacream.training.java.publishing.app;
 
 import javax.annotation.PostConstruct;
 
-import org.javacream.training.java.publishing.api.BooksService;
 import org.javacream.training.java.publishing.api.OrderService;
+import org.javacream.training.java.publishing.api.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +12,7 @@ public class OrderingApplication {
 
 	@Autowired
 	private OrderService orderService;
+	@Autowired StoreService storeService;
 	
 	@PostConstruct
 	public void start() {

@@ -1,21 +1,19 @@
 package org.javacream.training.java.publishing.impl;
 
-import java.util.Random;
-
 import org.javacream.training.java.publishing.api.IsbnGenerator;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-@Qualifier(IsbnGenerator.Strategies.RANDOM)
-public class RandomIsbnGenerator implements IsbnGenerator {
+//@Qualifier("sequence")
+public class CounterIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")
 	private String prefix;
 	@Value("${isbngenerator.suffix}")
 	private String suffix;
-	private Random random;
+	private int counter;
 
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
@@ -25,13 +23,9 @@ public class RandomIsbnGenerator implements IsbnGenerator {
 		this.suffix = suffix;
 	}
 
-	{
-		random = new Random(this.hashCode() + System.currentTimeMillis());
-	}
-
 	@Override
 	public String next() {
-		int nextInt = random.nextInt();
+		int nextInt = ++counter;
 		int positivenextInt = Math.abs(nextInt);
 		return prefix + positivenextInt + suffix;
 	}
