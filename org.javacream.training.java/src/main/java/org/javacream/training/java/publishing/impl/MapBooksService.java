@@ -5,12 +5,17 @@ import java.util.Map;
 
 import org.javacream.training.java.publishing.api.BooksService;
 import org.javacream.training.java.publishing.api.IsbnGenerator;
+import org.javacream.training.java.publishing.api.StoreService;
 import org.javacream.training.java.publishing.api.types.Book;
 
 public class MapBooksService implements BooksService {
 
 	private Map<String, Book> books = new HashMap<>();
 	private IsbnGenerator isbnGenerator;
+	private StoreService storeService;
+	public void setStoreService(StoreService storeService) {
+		this.storeService = storeService;
+	}
 
 	public void setIsbnGenerator(IsbnGenerator randomIsbnGenerator) {
 		this.isbnGenerator = randomIsbnGenerator;
@@ -35,7 +40,12 @@ public class MapBooksService implements BooksService {
 	@Override
 	public Book deleteBookByIsbn(String isbn) {
 		//TODO: Über den StoreService den Stock abfragen: getStock("books", isbn)
-		return books.remove(isbn);
+		Book book = books.remove(isbn);
+		if (book != null) {
+			int stock = storeService.getStock("books", isbn);
+			book.setAvailable(stock > 0);
+		}
+		return book;
 	}
 
 	@Override

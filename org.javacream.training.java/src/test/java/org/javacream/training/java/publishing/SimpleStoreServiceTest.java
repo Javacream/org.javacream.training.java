@@ -11,6 +11,7 @@ public class SimpleStoreServiceTest {
 	
 	@Before public void init() {
 		SimpleStoreService simpleStoreService = new SimpleStoreService();
+		simpleStoreService.setDefaultStock(42);
 		//SecondSimpleStoreService simpleStoreService = new SecondSimpleStoreService();
 		this.storeService = simpleStoreService;
 	}

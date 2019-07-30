@@ -4,6 +4,7 @@ import org.javacream.training.java.publishing.api.BooksService;
 import org.javacream.training.java.publishing.api.types.Book;
 import org.javacream.training.java.publishing.impl.MapBooksService;
 import org.javacream.training.java.publishing.impl.RandomIsbnGenerator;
+import org.javacream.training.java.publishing.impl.SimpleStoreService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,10 +14,13 @@ public class BooksServiceTest {
 	@Before public void init() {
 		MapBooksService mapBooksService = new MapBooksService();
 		RandomIsbnGenerator randomIsbnGenerator = new RandomIsbnGenerator();
+		SimpleStoreService simpleStoreService = new SimpleStoreService();
+		
 		mapBooksService.setIsbnGenerator(randomIsbnGenerator);
+		mapBooksService.setStoreService(simpleStoreService);
 		randomIsbnGenerator.setPrefix("ISBN:");
 		randomIsbnGenerator.setSuffix("-de");
-		
+		simpleStoreService.setDefaultStock(42);
 		this.booksService = mapBooksService;
 	}
 	

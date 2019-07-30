@@ -7,6 +7,12 @@ public class Book {
 	private int pages;
 	private double price;
 	private boolean available;
+	public boolean isAvailable() {
+		return available;
+	}
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
 	@Override
 	public String toString() {
 		return "Book [isbn=" + isbn + ", title=" + title + ", pages=" + pages + ", price=" + price + ", available="
