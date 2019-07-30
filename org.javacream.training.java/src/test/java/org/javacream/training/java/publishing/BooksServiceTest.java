@@ -1,12 +1,15 @@
 package org.javacream.training.java.publishing;
 
+import org.javacream.training.java.publishing.api.BooksService;
+import org.javacream.training.java.publishing.api.types.Book;
+import org.javacream.training.java.publishing.impl.MapBooksService;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class BooksServiceTest {
 
 @Test public void testBooksSequence() {
-	BooksService booksService = new BooksService();
+	BooksService booksService = new MapBooksService();
 	final String ISBN = "ISBN";
 	final String TITLE = "TITLE";
 	final double PRICE = 19.99;

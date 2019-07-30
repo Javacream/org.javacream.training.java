@@ -1,4 +1,4 @@
-package org.javacream.training.java.publishing;
+package org.javacream.training.java.publishing.api.types;
 
 public class Book {
 

@@ -3,8 +3,12 @@ package org.javacream.training.java.demo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-import org.javacream.training.java.publishing.Book;
+import org.javacream.training.java.publishing.api.types.Book;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,7 +21,7 @@ public class CollectionsTest {
 
 	@Test
 	public void testListWithStrings() {
-		ArrayList<String> list = new ArrayList<>();
+		List<String> list = new LinkedList<>();
 		list.add("Hugo");
 		list.add("Emil");
 		list.add("Fritz");
@@ -32,7 +36,7 @@ public class CollectionsTest {
 	}
 	@Test
 	public void testSetWithStrings() {
-		HashSet<String> set = new HashSet<>();
+		Set<String> set = new HashSet<>();
 		set.add("Hugo");
 		set.add("Emil");
 		set.add("Fritz");
@@ -48,7 +52,7 @@ public class CollectionsTest {
 
 	@Test
 	public void testMapWithStringsAndInteger() {
-		HashMap<String, Integer> map = new HashMap<>();
+		Map<String, Integer> map = new HashMap<>();
 		map.put("Hugo", 81373);
 		map.put("Emil", 30010);
 		map.put("Fritz", 40010);

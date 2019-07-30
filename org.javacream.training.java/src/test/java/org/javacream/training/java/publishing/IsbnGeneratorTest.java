@@ -1,5 +1,7 @@
 package org.javacream.training.java.publishing;
 
+import org.javacream.training.java.publishing.api.IsbnGenerator;
+import org.javacream.training.java.publishing.impl.RandomIsbnGenerator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +12,7 @@ public class IsbnGeneratorTest {
 	
 	@Before
 	public void setUp() {
-		isbnGenerator = new IsbnGenerator();
+		isbnGenerator = new RandomIsbnGenerator();
 	}
 	
 	@Test

@@ -1,5 +1,8 @@
 package org.javacream.training.java.publishing;
 
+import org.javacream.training.java.publishing.api.types.Book;
+import org.javacream.training.java.publishing.api.types.SchoolBook;
+import org.javacream.training.java.publishing.api.types.SpecialistBook;
 import org.junit.Test;
 
 public class BookTest {
