@@ -63,7 +63,7 @@ public class MapBooksService implements BooksService {
 
 	@Override
 	public Book deleteBookByIsbn(String isbn) {
-		return books.get(isbn);
+		return books.remove(isbn);
 	}
 
 	@Override
