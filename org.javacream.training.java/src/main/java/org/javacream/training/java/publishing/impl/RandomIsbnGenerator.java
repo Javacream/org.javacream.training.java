@@ -3,10 +3,14 @@ package org.javacream.training.java.publishing.impl;
 import java.util.Random;
 
 import org.javacream.training.java.publishing.api.IsbnGenerator;
-
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+@Component
 public class RandomIsbnGenerator implements IsbnGenerator {
 	
+	@Value("${isbngenerator.prefix}")
 	private String prefix;
+	@Value("${isbngenerator.suffix}")
 	private String suffix;
 	private Random random;
 

@@ -1,9 +1,13 @@
 package org.javacream.training.java.publishing.impl;
 
 import org.javacream.training.java.publishing.api.StoreService;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SimpleStoreService implements StoreService {
 
+	@Value("${defaultStock}")
 	private int defaultStock;
 	
 	
