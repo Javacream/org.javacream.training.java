@@ -6,6 +6,7 @@ public class HelloWorld {
 		String message = "Hello!";
 		Integer number = 42;
 		number = 9;
+		System.out.println(message);
 	}
 
 }
