@@ -25,24 +25,21 @@ public class Person {
 		System.out.println(message);
 	}
 	
-	public Boolean marry(Person newPartner) {
-		if (newPartner != this && newPartner != null && newPartner.partner == null && this.partner == null) {
+	public void marry(Person newPartner) {
+		if (newPartner != this && newPartner.partner == null && this.partner == null) {
 			this.partner = newPartner;
 			newPartner.partner = this;
-			return true;
 		}else {
-			System.out.println("marriage not possible!");
-			return false;
+			throw new IllegalArgumentException("marriage not possible!");
 		}
 	}
 
-	public Boolean divorce() {
+	public void divorce() {
 		if (this.partner != null) {
 			this.partner.partner = null;
 			this.partner = null;
-			return true;
 		}else {
-			return false;
+			throw new IllegalArgumentException("marriage not possible!");
 		}
 	}
 

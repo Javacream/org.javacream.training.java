@@ -3,20 +3,51 @@ package org.javacream.training.java;
 public class PeopleApplication {
 
 	public static void main(String[] args) {
-		Person sawitzki = new Person("Sawitzki", "Rainer", 80.5, 183);
-		Person mustermann = new Person("Mustermann", "Hans", 99.3, 196);
-		Person fabricius = new Person("Fabricius", "Carola", 57.5, 176);
-		System.out.println(mustermann.marry(fabricius));
-		sawitzki.sayHello();
-		fabricius.sayHello();
-		mustermann.sayHello();
-		System.out.println(sawitzki.marry(fabricius));
-		fabricius.divorce();
-		fabricius.marry(sawitzki);
-		sawitzki.sayHello();
-		fabricius.sayHello();
-		mustermann.sayHello();
-		mustermann.marry(mustermann);
+		try {
+			Person sawitzki = new Person("Sawitzki", "Rainer", 80.5, 183);
+			Person mustermann = new Person("Mustermann", "Hans", 99.3, 196);
+			Person fabricius = new Person("Fabricius", "Carola", 57.5, 176);
+			try {
+				mustermann.marry(fabricius);
+				sawitzki.sayHello();
+				fabricius.sayHello();
+				mustermann.sayHello();
+			} catch (IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				sawitzki.marry(fabricius);
+				sawitzki.sayHello();
+				fabricius.sayHello();
+				mustermann.sayHello();
+			} catch (IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}
+			fabricius.divorce();
+			try {
+				fabricius.marry(sawitzki);
+				sawitzki.sayHello();
+				fabricius.sayHello();
+				mustermann.sayHello();
+			} catch (IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				mustermann.marry(mustermann);
+			} catch (IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}
+
+			try {
+				mustermann.marry(null);
+			} catch (IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}
+
+		} catch (NullPointerException npe) {
+			npe.printStackTrace();
+			System.out.println("Detected NullPointerException, possibly a programmer's error");
+		}
 	}
 
 }
