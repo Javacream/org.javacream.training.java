@@ -39,7 +39,7 @@ public class Person {
 			this.partner.partner = null;
 			this.partner = null;
 		}else {
-			throw new IllegalArgumentException("marriage not possible!");
+			throw new IllegalArgumentException("divorce not possible!");
 		}
 	}
 
