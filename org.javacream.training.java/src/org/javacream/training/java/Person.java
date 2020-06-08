@@ -1,5 +1,4 @@
 package org.javacream.training.java;
-//Classname: Beginnt mit Großbuchstaben, Camel-case
 public class Person {
 
 	public Person(String lastname, String firstname, Double weight, Integer height) {
@@ -11,7 +10,6 @@ public class Person {
 	}
 
 
-	//Attributnamen: Kleinbuchstaben am Anfang
 	String lastname;
 	String firstname;
 	Double weight;
@@ -19,20 +17,33 @@ public class Person {
 	Person partner;
 	
 	
-	//Methodennamen: Kleinbuchstaben am Anfang
 	public void sayHello() {
-		String prefix = "Hello, my name is ";
-		System.out.println(prefix + this.lastname);
+		String message = "Hello, my name is "  + this.lastname;
+		if (this.partner != null) {
+			message = message + ", i am married with " + this.partner.lastname;
+		}
+		System.out.println(message);
 	}
 	
 	public Boolean marry(Person newPartner) {
-		//TODO: Partner konsistent setzen
-		return true;
+		if (newPartner != null && newPartner.partner == null && this.partner == null) {
+			this.partner = newPartner;
+			newPartner.partner = this;
+			return true;
+		}else {
+			System.out.println("marriage not possible!");
+			return false;
+		}
 	}
 
 	public Boolean divorce() {
-		//TODO: Partner konsistent auflösen
-		return true;
+		if (this.partner != null) {
+			this.partner.partner = null;
+			this.partner = null;
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }
