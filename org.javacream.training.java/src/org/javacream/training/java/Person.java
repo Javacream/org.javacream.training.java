@@ -16,6 +16,7 @@ public class Person {
 	String firstname;
 	Double weight;
 	Integer height;
+	Person partner;
 	
 	
 	//Methodennamen: Kleinbuchstaben am Anfang
@@ -23,6 +24,15 @@ public class Person {
 		String prefix = "Hello, my name is ";
 		System.out.println(prefix + this.lastname);
 	}
+	
+	public Boolean marry(Person newPartner) {
+		//TODO: Partner konsistent setzen
+		return true;
+	}
 
+	public Boolean divorce() {
+		//TODO: Partner konsistent auflösen
+		return true;
+	}
 
 }
