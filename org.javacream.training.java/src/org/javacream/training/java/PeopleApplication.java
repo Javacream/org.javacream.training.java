@@ -16,6 +16,7 @@ public class PeopleApplication {
 		sawitzki.sayHello();
 		fabricius.sayHello();
 		mustermann.sayHello();
+		mustermann.marry(mustermann);
 	}
 
 }

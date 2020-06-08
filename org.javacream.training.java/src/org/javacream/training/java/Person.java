@@ -26,7 +26,7 @@ public class Person {
 	}
 	
 	public Boolean marry(Person newPartner) {
-		if (newPartner != null && newPartner.partner == null && this.partner == null) {
+		if (newPartner != this && newPartner != null && newPartner.partner == null && this.partner == null) {
 			this.partner = newPartner;
 			newPartner.partner = this;
 			return true;
