@@ -20,7 +20,8 @@ public class Person {
 	
 	//Methodennamen: Kleinbuchstaben am Anfang
 	public void sayHello() {
-		System.out.println("Hello");
+		String prefix = "Hello, my name is ";
+		System.out.println(prefix + this.lastname);
 	}
 
 
