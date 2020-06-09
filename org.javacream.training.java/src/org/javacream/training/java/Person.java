@@ -101,4 +101,19 @@ public class Person {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "Person [address=" + address + ", lastname=" + lastname + ", firstname=" + firstname + ", weight="
+				+ weight + ", height=" + height + ", partner=" + partner + "]";
+	}
+
+
+//	@Override
+//	public boolean equals(Object obj) {
+//		return true;
+//	}
+
+
+
+
 }
