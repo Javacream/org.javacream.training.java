@@ -14,6 +14,9 @@ public class Person {
 		this.firstname = firstname;
 		this.weight = weight;
 		this.height = height;
+		//counter = counter + 1; //or
+		//counter +=counter; //or
+		counter++;
 	}
 
 	String lastname;
@@ -22,6 +25,7 @@ public class Person {
 	Integer height;
 	Person partner;
 	final static Integer NUMBER_OF_EYES = 2;
+	static Integer counter = 0;
 	/**
 	 * sayHello prints a simple message on the system console
 	 */
