@@ -15,8 +15,8 @@ public class Person {
 		this.weight = weight;
 		this.height = height;
 		//counter = counter + 1; //or
-		//counter +=counter; //or
-		counter++;
+		counter +=1; //or
+		//counter++;
 	}
 
 	String lastname;
