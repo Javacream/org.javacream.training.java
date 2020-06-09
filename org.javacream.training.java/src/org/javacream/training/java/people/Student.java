@@ -1,4 +1,7 @@
-package org.javacream.training.java;
+package org.javacream.training.java.people;
+
+import org.javacream.training.java.util.Address;
+import org.javacream.training.java.util.University;
 
 public class Student extends Person {
 

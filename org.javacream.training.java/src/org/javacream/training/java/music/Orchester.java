@@ -1,4 +1,7 @@
-package org.javacream.training.java;
+package org.javacream.training.java.music;
+
+import org.javacream.training.java.util.Address;
+import org.javacream.training.java.util.AddressProvider;
 
 public class Orchester implements AddressProvider{
 

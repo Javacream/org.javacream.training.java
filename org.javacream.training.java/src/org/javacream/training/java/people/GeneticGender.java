@@ -1,4 +1,4 @@
-package org.javacream.training.java;
+package org.javacream.training.java.people;
 
 public enum GeneticGender {
 	MALE, FEMALE, TRANS;

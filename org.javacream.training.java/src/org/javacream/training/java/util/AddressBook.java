@@ -1,4 +1,7 @@
-package org.javacream.training.java;
+package org.javacream.training.java.util;
+
+import org.javacream.training.java.people.Person;
+import org.javacream.training.java.people.Student;
 
 public class AddressBook {
 

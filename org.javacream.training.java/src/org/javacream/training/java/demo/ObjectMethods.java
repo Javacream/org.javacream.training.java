@@ -1,4 +1,8 @@
-package org.javacream.training.java;
+package org.javacream.training.java.demo;
+
+import org.javacream.training.java.people.Person;
+import org.javacream.training.java.util.Address;
+import org.javacream.training.java.util.AddressProvider;
 
 public class ObjectMethods {
 

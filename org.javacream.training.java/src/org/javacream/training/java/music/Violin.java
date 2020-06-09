@@ -1,4 +1,4 @@
-package org.javacream.training.java;
+package org.javacream.training.java.music;
 
 public class Violin extends Instrument {
 

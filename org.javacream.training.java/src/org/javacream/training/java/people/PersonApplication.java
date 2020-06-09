@@ -1,4 +1,6 @@
-package org.javacream.training.java;
+package org.javacream.training.java.people;
+
+import org.javacream.training.java.util.Address;
 
 public class PersonApplication {
 

@@ -1,4 +1,4 @@
-package org.javacream.training.java;
+package org.javacream.training.java.demo;
 
 public class HelloWorld {
 
