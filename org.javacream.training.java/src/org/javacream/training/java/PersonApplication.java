@@ -1,6 +1,6 @@
 package org.javacream.training.java;
 
-public class PeopleApplication {
+public class PersonApplication {
 
 	public static void main(String[] args) {
 		try {
@@ -43,11 +43,13 @@ public class PeopleApplication {
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 			}
+			System.out.println(Person.NUMBER_OF_EYES);
 
 		} catch (NullPointerException npe) {
 			npe.printStackTrace();
 			System.out.println("Detected NullPointerException, possibly a programmer's error");
 		}
+		
 	}
 
 }
