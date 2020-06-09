@@ -2,7 +2,7 @@ package org.javacream.training.java;
 
 public class Student extends Person {
 
-	public Student(String lastname, String firstname, Double weight, Integer height, Address address, String university) {
+	public Student(String lastname, String firstname, Double weight, Integer height, Address address, University university) {
 		super(lastname, firstname, weight, height, address);
 		this.university = university;
 	}
@@ -24,13 +24,13 @@ public class Student extends Person {
 	}
 
 	
-	private String university;
+	private University university;
 
-	public String getUniversity() {
+	public University  getUniversity() {
 		return university;
 	}
 
-	public void setUniversity(String university) {
+	public void setUniversity(University university) {
 		this.university = university;
 	}
 	

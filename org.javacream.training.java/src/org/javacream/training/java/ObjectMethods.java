@@ -12,9 +12,9 @@ public class ObjectMethods {
 		Address munich2 = new Address("München", "Marienplatz");
 		
 		
-		Person sawitzki = new Person("Sawitzki", "Rainer", 80.5, 183, munich);
-		Person sawitzki2 = new Person("Sawitzki", "Rainer", 80.5, 183, munich);
-		Person mustermann = new Person("Mustermann", "Hans", 80.5, 183, berlin);
+		AddressProvider sawitzki = new Person("Sawitzki", "Rainer", 80.5, 183, munich);
+		AddressProvider sawitzki2 = new Person("Sawitzki", "Rainer", 80.5, 183, munich);
+		AddressProvider mustermann = new Person("Mustermann", "Hans", 80.5, 183, berlin);
 		
 		//== Vergleich der Referenzen
 //		Boolean sawitzkiIsMustermann = sawitzki == mustermann;

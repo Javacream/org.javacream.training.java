@@ -6,7 +6,7 @@ package org.javacream.training.java;
  * @author Rainer Sawitzki
  *
  */
-public class Person {
+public class Person implements AddressProvider {
 
 	public Person(String lastname, String firstname, Double weight, Integer height, Address address) {
 		super();
@@ -44,6 +44,10 @@ public class Person {
 		this.height = height;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.javacream.training.java.AddressProvider#getAddress()
+	 */
+	@Override
 	public Address getAddress() {
 		return address;
 	}
@@ -52,7 +56,7 @@ public class Person {
 		return firstname;
 	}
 
-	public Person getPartner() {
+	public AddressProvider getPartner() {
 		return partner;
 	}
 

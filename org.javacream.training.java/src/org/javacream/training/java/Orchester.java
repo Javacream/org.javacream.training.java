@@ -1,6 +1,6 @@
 package org.javacream.training.java;
 
-public class Orchester {
+public class Orchester implements AddressProvider{
 
 	public static void main(String[] args) {
 		new Orchester().play();
@@ -22,6 +22,11 @@ public class Orchester {
 	private void playInstrument(Instrument i) {
 		System.out.println(i.getDescription() + ": " + i.makeSound());
 		
+	}
+
+	@Override
+	public Address getAddress() {
+		return new Address("Eg", "Al");
 	}
 
 }
