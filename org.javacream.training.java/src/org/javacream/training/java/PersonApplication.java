@@ -43,8 +43,8 @@ public class PersonApplication {
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 			}
-			System.out.println("Number Of Eyes: " + Person.NUMBER_OF_EYES);
-			System.out.println("Number created people: " + Person.counter);
+			System.out.println("Number of eyes: " + Person.NUMBER_OF_EYES);
+			System.out.println("Number of created people: " + Person.counter);
 
 		} catch (NullPointerException npe) {
 			npe.printStackTrace();
