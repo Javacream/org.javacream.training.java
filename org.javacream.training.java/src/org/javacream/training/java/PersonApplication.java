@@ -5,6 +5,7 @@ public class PersonApplication {
 	public static void main(String[] args) {
 		try {
 			Person sawitzki = new Person("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"));
+			Student sawitzki2 = new Student("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"));
 			Person mustermann = new Person("Mustermann", "Hans", 99.3, 196, new Address("Irgend", "Wo"));
 			Person fabricius = new Person("Fabricius", "Carola", 57.5, 176, new Address("München", "Stachus"));
 			try {
