@@ -18,8 +18,8 @@ public class CollectionsDemo {
 	}
 
 	public CollectionsDemo() {
-		// listDemo();
-		// setDemo();
+		listDemo();
+		setDemo();
 		mapDemo();
 	}
 
