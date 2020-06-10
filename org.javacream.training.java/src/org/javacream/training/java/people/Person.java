@@ -2,7 +2,6 @@ package org.javacream.training.java.people;
 
 import org.javacream.training.java.util.Address;
 import org.javacream.training.java.util.AddressProvider;
-
 /**
  * This class is a simple abstraction of a person
  * 
