@@ -1,30 +1,29 @@
 package org.javacream.training.java.music;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.javacream.training.java.util.Address;
 import org.javacream.training.java.util.AddressProvider;
 
-public class Orchester implements AddressProvider{
+public class Orchester implements AddressProvider {
+	private List<Instrument> instruments = new ArrayList<>();
 
 	public static void main(String[] args) {
 		new Orchester().play();
 	}
 
 	private void play() {
-		//Instrument i1 = new Instrument("an instrument");
-		Guitar g = new Guitar();
-		Violin v = new Violin();
-		Trumpet t = new Trumpet();
-		//playInstrument(i1);
-		playInstrument(g);
-		playInstrument(v);
-		playInstrument(t);
-		
-		
+		instruments.add(new Guitar());
+		instruments.add(new Violin());
+		instruments.add(new Trumpet());
+		playConcert();
 	}
-	
-	private void playInstrument(Instrument i) {
-		System.out.println(i.getDescription() + ": " + i.makeSound());
-		
+
+	private void playConcert() {
+		for (Instrument i : instruments) {
+			System.out.println(i.getDescription() + ": " + i.makeSound());
+		}
 	}
 
 	@Override
