@@ -13,4 +13,6 @@ public interface PeopleController {
 	void updateWeight(Integer id, Double newWeight);
 	void updateLastname(Integer id, String newLastname);
 	void updateHeight(Integer id, Integer newHeight);
+	void save();
+	void load();
 }

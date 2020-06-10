@@ -69,4 +69,15 @@ public class MapPeopleController implements PeopleController {
 
 	}
 
+	@Override
+	public void save() {
+		for (Person p: people.values()) {
+			System.out.println(PersonUtility.encode(p));
+		}
+	}
+
+	@Override
+	public void load() {
+	}
+
 }
