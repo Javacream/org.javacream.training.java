@@ -1,13 +1,19 @@
 package org.javacream.training.java.people;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.javacream.training.java.util.Address;
 
 public class MapPeopleController implements PeopleController {
+	private Path path = Paths.get("/home/rainer/javatraining/people.csv");
 
 	private Map<Integer, Person> people;
 	
@@ -71,14 +77,31 @@ public class MapPeopleController implements PeopleController {
 
 	@Override
 	public void save() {
+		StringBuilder stringBuilder = new StringBuilder();
 		for (Person p: people.values()) {
-			System.out.println(PersonUtility.encode(p));
+			stringBuilder.append(PersonUtility.encode(p)).append("\n");
+		}
+		try {
+			Files.write(path, stringBuilder.toString().getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public void load() {
-		System.out.println(PersonUtility.decode("Sawitzki,Rainer,183,79.9,u,München,Marienplatz"));
+		people.clear();
+		try {
+			List<String> peopleStringList = Files.readAllLines(path);
+			Integer counter= 0;
+			for (String s: peopleStringList) {
+				Person person = PersonUtility.decode(s);
+				people.put(counter, person);
+				counter++;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
