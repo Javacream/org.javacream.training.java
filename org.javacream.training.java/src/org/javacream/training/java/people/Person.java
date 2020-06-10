@@ -1,5 +1,9 @@
 package org.javacream.training.java.people;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.javacream.training.java.util.Address;
 import org.javacream.training.java.util.AddressProvider;
 /**
@@ -12,14 +16,28 @@ public class Person implements AddressProvider {
 
 	public Person(String lastname, String firstname, Double weight, Integer height, Address address) {
 		super();
+		this.firstnames = new HashSet<>();
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.weight = weight;
 		this.height = height;
 		this.address = address;
-		//counter = counter + 1; //or
 		counter +=1; //or
-		//counter++;
+		this.firstnames.add(firstname);
+	}
+	public Person(String lastname, String firstname, Double weight, Integer height, Address address, Set<String> firstnames ) {
+		super();
+		this.firstnames = firstnames;
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.weight = weight;
+		this.height = height;
+		this.address = address;
+		counter +=1; //or
+	}
+
+	public Set<String> getFirstnames() {
+		return firstnames;
 	}
 
 	public String getLastname() {
@@ -73,6 +91,7 @@ public class Person implements AddressProvider {
 	private Address address;
 	private String lastname;
 	private String firstname;
+	private Set<String> firstnames;
 	private Double weight;
 	private Integer height;
 	private Person partner;
@@ -109,8 +128,8 @@ public class Person implements AddressProvider {
 
 	@Override
 	public String toString() {
-		return "Person [address=" + address + ", lastname=" + lastname + ", firstname=" + firstname + ", weight="
-				+ weight + ", height=" + height + ", partner=" + partner + "]";
+		return "Person [address=" + address + ", lastname=" + lastname + ", firstname=" + firstname + ", firstnames="
+				+ firstnames + ", weight=" + weight + ", height=" + height + "]";
 	}
 
 

@@ -1,5 +1,8 @@
 package org.javacream.training.java.people;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.javacream.training.java.util.Address;
 
 public class PeopleApplication {
@@ -9,18 +12,17 @@ public class PeopleApplication {
 	}
 	
 	public PeopleApplication() {
-		Person sawitzki = new Person("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"));
+		Set<String> firstnames = new HashSet<>();
+		firstnames.add("Rainer");
+		firstnames.add("Ulrich");
+		
+		Person sawitzki = new Person("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"), firstnames);
 		Student einstein = new Student("Einstein", "Albert", 70.5, 166, new Address("München", "Uni"));
 		
-//		sawitzki.sayHello();
-//		einstein.sayHello();
-		personSayHello(sawitzki);
-		personSayHello(einstein);
+		System.out.println(sawitzki);
+		System.out.println(einstein);
 	}
 	
 	
-	private void personSayHello(Person p) {
-		p.sayHello();
-	}
 
 }
