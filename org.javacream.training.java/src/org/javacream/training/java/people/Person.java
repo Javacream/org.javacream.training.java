@@ -20,10 +20,13 @@ public class Person implements AddressProvider {
 	}
 	
 	public Person(String lastname, String firstname, Double weight, Integer height, Address address) {
-		this(lastname, firstname, weight, height, address, new HashSet<>());
+		this(lastname, firstname, weight, height, GeneticGender.UNKNOWN, address);
+	}
+	public Person(String lastname, String firstname, Double weight, Integer height, GeneticGender gender, Address address) {
+		this(lastname, firstname, weight, height, gender, address, new HashSet<>());
 		this.firstnames.add(firstname);
 	}
-	public Person(String lastname, String firstname, Double weight, Integer height, Address address, Set<String> firstnames ) {
+	public Person(String lastname, String firstname, Double weight, Integer height, GeneticGender gender, Address address, Set<String> firstnames ) {
 		super();
 		this.firstnames = firstnames;
 		this.lastname = lastname;
@@ -31,6 +34,7 @@ public class Person implements AddressProvider {
 		this.weight = weight;
 		this.height = height;
 		this.address = address;
+		this.gender = gender;
 	}
 
 	public Set<String> getFirstnames() {
@@ -92,6 +96,11 @@ public class Person implements AddressProvider {
 	private Double weight;
 	private Integer height;
 	private Person partner;
+	private GeneticGender gender;
+	public GeneticGender getGender() {
+		return gender;
+	}
+
 	private final static Integer NUMBER_OF_EYES = 2;
 	private static Integer counter = 0;
 	/**

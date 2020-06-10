@@ -78,6 +78,7 @@ public class MapPeopleController implements PeopleController {
 
 	@Override
 	public void load() {
+		System.out.println(PersonUtility.decode("Sawitzki,Rainer,183,79.9,u,München,Marienplatz"));
 	}
 
 }

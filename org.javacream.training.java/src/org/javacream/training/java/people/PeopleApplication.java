@@ -22,7 +22,8 @@ public class PeopleApplication {
 		peopleController.deleteById(idForSawitzkiKlaus);
 		System.out.println(peopleController.findByLastname("Sawitzki"));
 		
-		
+		peopleController.save();
+		peopleController.load();
 	}
 	
 	

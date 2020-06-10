@@ -1,6 +1,6 @@
 package org.javacream.training.java.people;
 
 public enum GeneticGender {
-	MALE, FEMALE, TRANS;
+	MALE, FEMALE, TRANS,UNKNOWN;
 
 }
