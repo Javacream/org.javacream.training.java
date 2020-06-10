@@ -1,6 +1,5 @@
 package org.javacream.training.java.people;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,15 +13,14 @@ import org.javacream.training.java.util.AddressProvider;
  */
 public class Person implements AddressProvider {
 
+	//Das wird bei jeder Konstruktion aufgerufen!
+	{
+		counter +=1;
+		
+	}
+	
 	public Person(String lastname, String firstname, Double weight, Integer height, Address address) {
-		super();
-		this.firstnames = new HashSet<>();
-		this.lastname = lastname;
-		this.firstname = firstname;
-		this.weight = weight;
-		this.height = height;
-		this.address = address;
-		counter +=1; //or
+		this(lastname, firstname, weight, height, address, new HashSet<>());
 		this.firstnames.add(firstname);
 	}
 	public Person(String lastname, String firstname, Double weight, Integer height, Address address, Set<String> firstnames ) {
@@ -33,7 +31,6 @@ public class Person implements AddressProvider {
 		this.weight = weight;
 		this.height = height;
 		this.address = address;
-		counter +=1; //or
 	}
 
 	public Set<String> getFirstnames() {
