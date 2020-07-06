@@ -1,4 +1,7 @@
-package org.javacream.training.java.util;
+package org.javacream.training.java.academies;
+
+import org.javacream.training.java.util.Address;
+import org.javacream.training.java.util.AddressProvider;
 
 public class University  implements AddressProvider{
 	private String name;

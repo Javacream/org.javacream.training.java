@@ -1,5 +1,7 @@
 package org.javacream.training.java.people;
 
+import org.javacream.training.java.people.api.Person;
+import org.javacream.training.java.people.impl.PersonUtility;
 import org.javacream.training.java.util.Address;
 import org.junit.Assert;
 import org.junit.Test;

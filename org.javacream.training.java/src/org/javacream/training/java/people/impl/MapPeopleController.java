@@ -1,4 +1,4 @@
-package org.javacream.training.java.people;
+package org.javacream.training.java.people.impl;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.javacream.training.java.people.api.PeopleController;
+import org.javacream.training.java.people.api.Person;
 import org.javacream.training.java.util.Address;
 
 public class MapPeopleController implements PeopleController {

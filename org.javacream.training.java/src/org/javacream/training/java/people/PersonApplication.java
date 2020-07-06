@@ -1,5 +1,7 @@
 package org.javacream.training.java.people;
 
+import org.javacream.training.java.people.api.Person;
+import org.javacream.training.java.people.api.Student;
 import org.javacream.training.java.util.Address;
 
 public class PersonApplication {

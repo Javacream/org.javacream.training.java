@@ -1,7 +1,9 @@
-package org.javacream.training.java.people;
+package org.javacream.training.java.people.impl;
 
 import java.util.StringTokenizer;
 
+import org.javacream.training.java.people.api.GeneticGender;
+import org.javacream.training.java.people.api.Person;
 import org.javacream.training.java.util.Address;
 
 public abstract class PersonUtility {

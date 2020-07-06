@@ -1,4 +1,4 @@
-package org.javacream.training.java.people;
+package org.javacream.training.java.people.api;
 
 import java.util.HashSet;
 import java.util.Set;

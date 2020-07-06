@@ -1,7 +1,7 @@
-package org.javacream.training.java.people;
+package org.javacream.training.java.people.api;
 
+import org.javacream.training.java.academies.University;
 import org.javacream.training.java.util.Address;
-import org.javacream.training.java.util.University;
 
 public class Student extends Person {
 
@@ -17,10 +17,6 @@ public class Student extends Person {
 	public Student(String lastname, String firstname, Address address, Double weight, Integer height) {
 		super(lastname, firstname, weight, height, address);
 	}
-
-//	public Student(String firstname, String lastname, Address address, Double weight, Integer height) {
-//		super(lastname, firstname, weight, height, address);
-//	}
 
 	public Student(String lastname, String firstname, Address address) {
 		super(lastname, firstname, 53.4, 150, address);
