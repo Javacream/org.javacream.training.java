@@ -39,8 +39,8 @@ public class StreamingTest {
 	}
 	//@Test 
 	public void oopForEach() {
-		names.forEach(s -> System.out.println(s));
-		
+		//names.forEach(s -> System.out.println(s));
+		names.forEach(System.out::println);
 	}
 
 	@Test public void dataWithStreaming() {
