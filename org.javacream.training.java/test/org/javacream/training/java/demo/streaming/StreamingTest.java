@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.After;
@@ -74,6 +75,11 @@ public class StreamingTest {
 	private void dataVeryCompacted(Stream<String> stringStream) {
 		stringStream.filter(s -> s.startsWith("F")).sorted((s1, s2) -> s1.compareTo(s2)).map(s -> s.length()).forEach(s -> System.out.println(s));
 		
+	}
+
+	private void collectData(Stream<String> stringStream) {
+		List<Integer> result = stringStream.filter(s -> s.startsWith("F")).sorted((s1, s2) -> s1.compareTo(s2)).map(s -> s.length()).collect(Collectors.toList());
+		System.out.println(result);
 	}
 
 
