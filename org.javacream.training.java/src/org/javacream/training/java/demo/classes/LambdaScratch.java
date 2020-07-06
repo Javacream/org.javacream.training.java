@@ -20,8 +20,10 @@ public class LambdaScratch {
 		Predicate<String> p = s -> s.startsWith("A");
 		Predicate<String> p2 = (String s) -> {return s.startsWith("A");};
 		Predicate<String> p3 = Demo::checkString;
-		Predicate<String> p4 = demo::instanceCheckString;
+		Predicate<String> p4 = demo::instanceCheck;
 		//Predicate<Integer> p5 = demo::instanceCheckString;
+		Predicate<Integer> p5 = demo::instanceCheck;
+		//Predicate<Object> p6 = demo::instanceCheck;
 
 		
 		//() -> {return 42;} = "Ein Lambda-Ausdruck, der keinen Parameter entgegen nimmt und ein Integer zurückliefert"
@@ -45,8 +47,11 @@ class Demo{
 	public void instancePrintString (String s) {
 		System.out.println(s);
 	}
-	public boolean instanceCheckString (String s) {
+	public boolean instanceCheck (String s) {
 		return s.startsWith("A");
+	}
+	public boolean instanceCheck (Integer i) {
+		return i > 42;
 	}
 
 }
