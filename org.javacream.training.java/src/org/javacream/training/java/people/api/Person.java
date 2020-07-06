@@ -2,9 +2,13 @@ package org.javacream.training.java.people.api;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import org.javacream.training.java.util.Address;
 import org.javacream.training.java.util.AddressProvider;
+
 /**
  * This class is a simple abstraction of a person
  * 
@@ -12,26 +16,40 @@ import org.javacream.training.java.util.AddressProvider;
  *
  */
 public class Person implements AddressProvider {
-	private int id;
 
-	//Das wird bei jeder Konstruktion aufgerufen!
+	private int id;
+	private static ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+	// Das wird bei jeder Konstruktion aufgerufen!
 	{
-		counter +=1;
+		counter += 1;
 		id = counter;
-		
+		if (HEARTBEAT) {
+			
+			scheduledExecutorService.scheduleAtFixedRate(() -> System.out.println("pulse for " + this), 0, 3,
+					TimeUnit.SECONDS);
+		}
 	}
 	
+	public static void stopHeartbeat() {
+		scheduledExecutorService.shutdownNow();
+	}
+
 	public int getId() {
 		return id;
 	}
+
 	public Person(String lastname, String firstname, Double weight, Integer height, Address address) {
 		this(lastname, firstname, weight, height, GeneticGender.UNKNOWN, address);
 	}
-	public Person(String lastname, String firstname, Double weight, Integer height, GeneticGender gender, Address address) {
+
+	public Person(String lastname, String firstname, Double weight, Integer height, GeneticGender gender,
+			Address address) {
 		this(lastname, firstname, weight, height, gender, address, new HashSet<>());
 		this.firstnames.add(firstname);
 	}
-	public Person(String lastname, String firstname, Double weight, Integer height, GeneticGender gender, Address address, Set<String> firstnames ) {
+
+	public Person(String lastname, String firstname, Double weight, Integer height, GeneticGender gender,
+			Address address, Set<String> firstnames) {
 		super();
 		this.firstnames = firstnames;
 		this.lastname = lastname;
@@ -70,7 +88,9 @@ public class Person implements AddressProvider {
 		this.height = height;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.javacream.training.java.AddressProvider#getAddress()
 	 */
 	@Override
@@ -102,12 +122,15 @@ public class Person implements AddressProvider {
 	private Integer height;
 	private Person partner;
 	private GeneticGender gender;
+
 	public GeneticGender getGender() {
 		return gender;
 	}
 
 	private final static Integer NUMBER_OF_EYES = 2;
 	private static Integer counter = 0;
+	public static boolean HEARTBEAT = false;
+
 	/**
 	 * sayHello prints a simple message on the system console
 	 */
@@ -143,13 +166,9 @@ public class Person implements AddressProvider {
 				+ firstnames + ", weight=" + weight + ", height=" + height + "]";
 	}
 
-
 //	@Override
 //	public boolean equals(Object obj) {
 //		return true;
 //	}
-
-
-
 
 }
