@@ -1,7 +1,11 @@
 package org.javacream.training.java.people;
 
+import java.util.HashMap;
+
+import org.javacream.training.java.academies.University;
 import org.javacream.training.java.people.api.PeopleController;
 import org.javacream.training.java.people.api.Person;
+import org.javacream.training.java.people.api.Student;
 import org.javacream.training.java.people.impl.MapPeopleController;
 import org.javacream.training.java.util.Address;
 import org.junit.Assert;
@@ -50,4 +54,30 @@ public class PeopleTest {
 		Assert.assertTrue(1 == peopleController.findByLastname("Sawitzki").size());
 		
 	}
+
+	@Test
+	public void createdStudentSawitzkiWithoutBuilderIsNull() {
+		HashMap<String, Object> options = new HashMap<>();
+		options.put("university", new University("LMU"));
+		Integer idForSawitzkiRainer = peopleController.create("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"), options);
+		Assert.assertNull(idForSawitzkiRainer);
+		
+	}
+	@Test
+	public void createdStudentSawitzkiWithoutBuilderIsOk() {
+		HashMap<String, Object> options = new HashMap<>();
+		options.put("university", new University("LMU"));
+		peopleController.addPersonBuilder(options.keySet(), (lastname, firstname, weight, height, address,
+				studentOptions) -> new Student(lastname, firstname, weight, height, address,
+						(University)studentOptions.get("university")));
+		
+		Integer idForSawitzkiRainer = peopleController.create("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"), options);
+		Person searchResult = peopleController.findById(idForSawitzkiRainer); 
+		Assert.assertEquals("Sawitzki", searchResult.getLastname());
+		Assert.assertEquals("Rainer", searchResult.getFirstname());
+		Assert.assertTrue(183 == searchResult.getHeight());
+		Assert.assertTrue(searchResult instanceof Student);
+		
+	}
+
 }

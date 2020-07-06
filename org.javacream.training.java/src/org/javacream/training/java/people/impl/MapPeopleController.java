@@ -4,11 +4,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.javacream.training.java.people.api.PeopleController;
 import org.javacream.training.java.people.api.Person;
@@ -17,16 +18,30 @@ import org.javacream.training.java.util.Address;
 public class MapPeopleController implements PeopleController {
 	private Path path = Paths.get("/home/rainer/javatraining/people.csv");
 
+	private Map<Set<String>, PersonBuilder> builders;
+
+	public void addPersonBuilder(Set<String> key, PersonBuilder builder) {
+		builders.put(key, builder);
+	}
+
 	private Map<Integer, Person> people;
-	
+
 	{
 		people = new HashMap<>();
+		builders = new HashMap<>();
+		builders.put(new HashSet<String>(), new PlainPersonBuilder());
 	}
+
 	@Override
-	public Integer create(String lastname, String firstname, Double weight, Integer height, Address address) {
-		Person newPerson = new Person(lastname, firstname, weight, height, address);
-		Integer id = Person.getCounter();
-		people.put(id, newPerson);
+	public Integer create(String lastname, String firstname, Double weight, Integer height, Address address,
+			Map<String, Object> options) {
+		PersonBuilder builder = builders.get(options.keySet());
+		if (builder == null) {
+			return null;
+		}
+		Person p = builder.create(lastname, firstname, weight, height, address, options);
+		int id = p.getId();
+		people.put(id, p);
 		return id;
 	}
 
@@ -35,9 +50,8 @@ public class MapPeopleController implements PeopleController {
 		return people.get(id);
 	}
 
-	@Override
-	public Set<Person> findByLastname(String lastname) {
-		return people.values().stream().filter(person -> person.getLastname().equals(lastname)).collect(Collectors.toSet());
+	public Collection<Person> findAll() {
+		return people.values();
 	}
 
 	@Override
@@ -74,7 +88,7 @@ public class MapPeopleController implements PeopleController {
 	@Override
 	public void save() {
 		StringBuilder stringBuilder = new StringBuilder();
-		for (Person p: people.values()) {
+		for (Person p : people.values()) {
 			stringBuilder.append(PersonUtility.encode(p)).append("\n");
 		}
 		try {
@@ -89,8 +103,8 @@ public class MapPeopleController implements PeopleController {
 		people.clear();
 		try {
 			List<String> peopleStringList = Files.readAllLines(path);
-			Integer counter= 0;
-			for (String s: peopleStringList) {
+			Integer counter = 0;
+			for (String s : peopleStringList) {
 				Person person = PersonUtility.decode(s);
 				people.put(counter, person);
 				counter++;
@@ -99,5 +113,6 @@ public class MapPeopleController implements PeopleController {
 			e.printStackTrace();
 		}
 	}
+
 
 }

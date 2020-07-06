@@ -12,13 +12,18 @@ import org.javacream.training.java.util.AddressProvider;
  *
  */
 public class Person implements AddressProvider {
+	private int id;
 
 	//Das wird bei jeder Konstruktion aufgerufen!
 	{
 		counter +=1;
+		id = counter;
 		
 	}
 	
+	public int getId() {
+		return id;
+	}
 	public Person(String lastname, String firstname, Double weight, Integer height, Address address) {
 		this(lastname, firstname, weight, height, GeneticGender.UNKNOWN, address);
 	}
