@@ -1,5 +1,7 @@
 package org.javacream.training.java.people;
 
+import java.util.Date;
+
 import org.javacream.training.java.people.api.PeopleController;
 import org.javacream.training.java.people.impl.MapPeopleController;
 import org.javacream.training.java.util.Address;
@@ -18,7 +20,9 @@ public class PeopleSaveApplication {
 		peopleController.updateWeight(idForSawitzkiRainer, 79.9);
 		peopleController.updateWeight(idForSawitzkiRainer, 79.9);
 		peopleController.deleteById(idForSawitzkiKlaus);
+		System.out.println("Starting save at " + new Date());
 		peopleController.save();
+		System.out.println("Finished save at " + new Date());
 	}
 	
 	

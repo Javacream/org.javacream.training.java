@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Stream;
 
 import org.javacream.training.java.people.api.PeopleController;
@@ -87,6 +90,16 @@ public class MapPeopleController implements PeopleController {
 
 	@Override
 	public void save() {
+		ExecutorService executorService = Executors.newSingleThreadExecutor();
+		executorService.execute( this::longRunningSave);
+		//longRunningSave();
+		
+		
+	}
+
+	private void longRunningSave() {
+		System.out.println("Starting longRunningSave at " + new Date());
+
 		StringBuilder stringBuilder = new StringBuilder();
 		for (Person p : people.values()) {
 			stringBuilder.append(PersonUtility.encode(p)).append("\n");
@@ -96,8 +109,16 @@ public class MapPeopleController implements PeopleController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Finished longRunningSave at " + new Date());
 
+	}
+	
 	@Override
 	public void load() {
 		people.clear();
