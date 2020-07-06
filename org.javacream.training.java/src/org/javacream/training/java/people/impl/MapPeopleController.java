@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.javacream.training.java.people.api.PeopleController;
 import org.javacream.training.java.people.api.Person;
@@ -50,8 +50,8 @@ public class MapPeopleController implements PeopleController {
 		return people.get(id);
 	}
 
-	public Collection<Person> findAll() {
-		return people.values();
+	public Stream<Person> findAll() {
+		return people.values().stream();
 	}
 
 	@Override

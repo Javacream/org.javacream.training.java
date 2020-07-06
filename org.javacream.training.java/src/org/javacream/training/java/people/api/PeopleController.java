@@ -1,10 +1,10 @@
 package org.javacream.training.java.people.api;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.javacream.training.java.util.Address;
 
@@ -19,18 +19,18 @@ public interface PeopleController {
 
 	Person findById(Integer id);
 
-	Collection<Person> findAll();
+	Stream<Person> findAll();
 
 	default Set<Person> findByLastname(String lastname) {
-		return findAll().stream().filter(person -> person.getLastname().equals(lastname)).collect(Collectors.toSet());
+		return findAll().filter(person -> person.getLastname().equals(lastname)).collect(Collectors.toSet());
 	}
 
 	default Set<Person> findHeigherThan(int minHeight) {
-		return findAll().stream().filter(person -> person.getHeight() >= minHeight).collect(Collectors.toSet());
+		return findAll().filter(person -> person.getHeight() >= minHeight).collect(Collectors.toSet());
 	}
 
 	default Set<Person> findByHeigherInterval(int minHeight, int maxHeight) {
-		return findAll().stream().filter(person -> person.getHeight() >= minHeight).collect(Collectors.toSet());
+		return findAll().filter(person -> person.getHeight() >= minHeight).collect(Collectors.toSet());
 	}
 
 	void deleteById(Integer id);
@@ -45,6 +45,7 @@ public interface PeopleController {
 
 	void load();
 	
+	@FunctionalInterface
 	interface PersonBuilder {
 		Person create(String lastname, String firstname, Double weight, Integer height, Address address,
 				Map<String, Object> options);
