@@ -2,7 +2,7 @@ package org.javacream.training.java.demo.classes;
 
 public class TopLevelClassMotor implements PowerProvider {
 
-	private Vehicle vehicle;
+	Vehicle vehicle;
 
 	@Override
 	public int power() {

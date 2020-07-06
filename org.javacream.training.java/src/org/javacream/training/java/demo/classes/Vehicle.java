@@ -1,13 +1,11 @@
 package org.javacream.training.java.demo.classes;
 
-import javax.xml.ws.Provider;
-
 public class Vehicle {
 	private int numberOfWheels;
 	private static final String DESCRIPTION = "a vehicle";
-	private TopLevelClassMotor topLevelClassMotor;
-	private Motor motor;
-	private InnerClassMotor innerClassMotor = new InnerClassMotor();
+	TopLevelClassMotor topLevelClassMotor;
+	Motor motor;
+	InnerClassMotor innerClassMotor = new InnerClassMotor();
 	
 
 	public void drive(String destination) {
@@ -63,6 +61,8 @@ public class Vehicle {
 			return 42;
 		};
 		
+		provider.power();
+		
 		
 	
 	}
@@ -84,7 +84,7 @@ public class Vehicle {
 
 class Motor implements PowerProvider{
 
-	private Vehicle vehicle;
+	Vehicle vehicle;
 
 	@Override
 	public int power() {

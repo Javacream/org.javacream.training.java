@@ -49,7 +49,7 @@ public class StreamingTest {
 		
 	}
 	
-	private void data(Stream<String> stringStream) {
+	void data(Stream<String> stringStream) {
 		Consumer <Integer> printOut = s -> System.out.println(s);
 		Predicate<String> filter = s -> s.startsWith("F");
 		Function<String, Integer> transformer = s -> s.length();
@@ -63,7 +63,7 @@ public class StreamingTest {
 	}
 
 	
-	private void dataCompacted(Stream<String> stringStream) {
+	void dataCompacted(Stream<String> stringStream) {
 		Consumer <Integer> printOut = s -> System.out.println(s);
 		Predicate<String> filter = s -> s.startsWith("F");
 		Function<String, Integer> transformer = s -> s.length();
@@ -72,12 +72,12 @@ public class StreamingTest {
 		stringStream.filter(filter).sorted(sorter).map(transformer).forEach(printOut);
 		
 	}
-	private void dataVeryCompacted(Stream<String> stringStream) {
+	void dataVeryCompacted(Stream<String> stringStream) {
 		stringStream.filter(s -> s.startsWith("F")).sorted((s1, s2) -> s1.compareTo(s2)).map(s -> s.length()).forEach(s -> System.out.println(s));
 		
 	}
 
-	private void collectData(Stream<String> stringStream) {
+	void collectData(Stream<String> stringStream) {
 		List<Integer> result = stringStream.filter(s -> s.startsWith("F")).sorted((s1, s2) -> s1.compareTo(s2)).map(s -> s.length()).collect(Collectors.toList());
 		System.out.println(result);
 	}
