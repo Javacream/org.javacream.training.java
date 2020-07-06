@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.javacream.training.java.people.api.PeopleController;
 import org.javacream.training.java.people.api.Person;
@@ -37,13 +38,7 @@ public class MapPeopleController implements PeopleController {
 
 	@Override
 	public Set<Person> findByLastname(String lastname) {
-		Set<Person> result = new HashSet<>();
-		for (Person p: people.values()) {
-			if (p.getLastname().equals(lastname)) {
-				result.add(p);
-			}
-		}
-		return result;
+		return people.values().stream().filter(person -> person.getLastname().equals(lastname)).collect(Collectors.toSet());
 	}
 
 	@Override
