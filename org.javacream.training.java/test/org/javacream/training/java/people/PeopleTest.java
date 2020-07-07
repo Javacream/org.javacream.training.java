@@ -27,6 +27,7 @@ public class PeopleTest {
 		Assert.assertEquals("Sawitzki", searchResult.getLastname());
 		Assert.assertEquals("Rainer", searchResult.getFirstname());
 		Assert.assertTrue(183 == searchResult.getHeight());
+		peopleController.deleteById(idForSawitzkiRainer);
 		
 	}
 	@Test
@@ -35,6 +36,7 @@ public class PeopleTest {
 		peopleController.updateWeight(idForSawitzkiRainer, 79.9);
 		Person searchResult = peopleController.findById(idForSawitzkiRainer); 
 		Assert.assertEquals(79.9, searchResult.getWeight(), 1e-12);
+		peopleController.deleteById(idForSawitzkiRainer);
 		
 	}
 
@@ -42,14 +44,15 @@ public class PeopleTest {
 	public void updatePersonSawitzkiThrowsException() {
 		Integer idForSawitzkiRainer = peopleController.create("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"));
 		peopleController.updateLastname(idForSawitzkiRainer, "");
+		peopleController.deleteById(idForSawitzkiRainer);
 		
 	}
 
 	@Test
 	public void searchByLastnameIsOk() {
-		peopleController.create("Sawitzki", "Klaus", 70.5, 181, new Address("München", "Stachus"));
-		peopleController.create("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"));
-		Assert.assertTrue(2 == peopleController.findByLastname("Sawitzki").size());
+		peopleController.create("Sawitzki_searchByLastnameIsOk", "Klaus", 70.5, 181, new Address("München", "Stachus"));
+		peopleController.create("Sawitzki_searchByLastnameIsOk", "Rainer", 80.5, 183, new Address("München", "Marienplatz"));
+		Assert.assertTrue(2 == peopleController.findByLastname("Sawitzki_searchByLastnameIsOk").size());
 		
 	}
 	//@Test
@@ -67,6 +70,7 @@ public class PeopleTest {
 		options.put("university", new University("LMU"));
 		Integer idForSawitzkiRainer = peopleController.create("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"), options);
 		Assert.assertNull(idForSawitzkiRainer);
+		peopleController.deleteById(idForSawitzkiRainer);
 		
 	}
 	@Test
@@ -83,7 +87,10 @@ public class PeopleTest {
 		Assert.assertEquals("Rainer", searchResult.getFirstname());
 		Assert.assertTrue(183 == searchResult.getHeight());
 		Assert.assertTrue(searchResult instanceof Student);
+		peopleController.deleteById(idForSawitzkiRainer);
+		peopleController.addPersonBuilder(options.keySet(), null);
 		
+
 	}
 	
 }
