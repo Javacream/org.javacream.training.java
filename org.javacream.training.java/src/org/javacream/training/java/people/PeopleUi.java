@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class PeopleUi {
@@ -25,8 +26,13 @@ public class PeopleUi {
 		initFrame();
 		staticUi();
 		registerEventListener();
+		show();
 	}
 	
+	private void show() {
+		frame.setVisible(true);
+	}
+
 	private void registerEventListener() {
 		saveButton.addActionListener(new ActionListener() {
 			
@@ -40,7 +46,8 @@ public class PeopleUi {
 	}
 
 	private void staticUi() {
-		Container panel = frame.getContentPane();
+		Container container = frame.getContentPane();
+		JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout());
 		
 		saveButton = new JButton("Save");
@@ -50,14 +57,13 @@ public class PeopleUi {
 		panel.add(saveButton);
 		panel.add(inputText);
 		panel.add(outputLabel);
+		container.add(panel);
 	}
 
 	private void initFrame() {
 		frame = new JFrame("P E O P L E");
 		frame.setBounds(100,  100,  500,  500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.pack();
-		frame.setVisible(true);
 	}
 
 }
