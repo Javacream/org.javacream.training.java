@@ -45,6 +45,11 @@ public class MapPeopleController implements PeopleController {
 		Person p = builder.create(lastname, firstname, weight, height, address, options);
 		int id = p.getId();
 		people.put(id, p);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return id;
 	}
 

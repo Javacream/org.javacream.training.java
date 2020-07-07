@@ -5,13 +5,16 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingWorker;
 
 import org.javacream.training.java.people.api.PeopleController;
 
@@ -44,13 +47,31 @@ public class PeopleUi {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PeopleController controller = PeopleApplicationContext.peopleController(); 
 				String lastname = lastnameInput.getText();
 				String firstname = firstnameInput.getText();
-				Integer personId = controller.create(lastname, firstname, 80.0, 173, null);
-				String result = "Created person with id " + personId;
-				outputLabel.setText(result);
-				controller.findAll().forEach(System.out::println);
+				System.out.println(Thread.currentThread());
+				SwingWorker<List<String>, String> worker = new SwingWorker<List<String>, String>(){
+
+					@Override
+					protected List<String> doInBackground() throws Exception {
+						System.out.println(Thread.currentThread());
+						PeopleController controller = PeopleApplicationContext.peopleController(); 
+						Integer personId = controller.create(lastname, firstname, 80.0, 173, null);
+						controller.findAll().forEach(System.out::println);
+						String result = "Created person with id " + personId;
+						ArrayList<String> results = new ArrayList<>();
+						results.add(result);
+						return results;
+					}
+					
+					@Override
+					protected void process(List<String> results) {
+						updateCreateResult(results.get(0));		
+					}
+					
+				};
+				worker.execute();
+//				
 			}
 		});
 		
@@ -97,6 +118,11 @@ public class PeopleUi {
 		frame = new JFrame("P E O P L E");
 		frame.setBounds(100,  100,  500,  500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void updateCreateResult(String output) {
+		outputLabel.setText(output);
+		
 	}
 
 }
