@@ -82,38 +82,4 @@ public class PeopleTest {
 		
 	}
 	
-	@Test public void testStaticTypes() {
-		Person p = null;
-		Student s = null;
-		printPerson(p);
-		printPerson(s);
-	}
-	
-	private void printPerson(Person p) {
-		System.out.println(p.getLastname());
-//		if (p instanceof Student) {
-			Student s = (Student)p; //ClassCastException
-			s.study();
-//		}
-	}
-
-	private void printAny(Object object) {
-		
-		try {
-			Class<? extends Object> objectClass = object.getClass();
-			
-			Method getLastnameMethod = objectClass.getMethod("getLastname");
-			Object result = getLastnameMethod.invoke(object);
-			Class<?> clazz = getLastnameMethod.getReturnType();
-			
-			Field lastnameField = objectClass.getField("lastname");
-			lastnameField.setAccessible(true);
-			Object lastname = lastnameField.get(object);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	
 }
