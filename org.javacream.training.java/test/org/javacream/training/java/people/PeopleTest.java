@@ -1,14 +1,11 @@
 package org.javacream.training.java.people;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 
 import org.javacream.training.java.academies.University;
 import org.javacream.training.java.people.api.PeopleController;
 import org.javacream.training.java.people.api.Person;
 import org.javacream.training.java.people.api.Student;
-import org.javacream.training.java.people.impl.MapPeopleController;
 import org.javacream.training.java.util.Address;
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,7 +17,7 @@ public class PeopleTest {
 
 	@Before
 	public void before() {
-		peopleController = new MapPeopleController();
+		peopleController = PeopleApplicationContext.peopleController();
 	}
 	
 	@Test
@@ -41,6 +38,13 @@ public class PeopleTest {
 		
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void updatePersonSawitzkiThrowsException() {
+		Integer idForSawitzkiRainer = peopleController.create("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"));
+		peopleController.updateLastname(idForSawitzkiRainer, "");
+		
+	}
+
 	@Test
 	public void searchByLastnameIsOk() {
 		peopleController.create("Sawitzki", "Klaus", 70.5, 181, new Address("München", "Stachus"));
@@ -48,7 +52,7 @@ public class PeopleTest {
 		Assert.assertTrue(2 == peopleController.findByLastname("Sawitzki").size());
 		
 	}
-	@Test
+	//@Test
 	public void deleteByIdIsOk() {
 		Integer idForSawitzkiKlaus = peopleController.create("Sawitzki", "Klaus", 70.5, 181, new Address("München", "Stachus"));
 		peopleController.create("Sawitzki", "Rainer", 80.5, 183, new Address("München", "Marienplatz"));
