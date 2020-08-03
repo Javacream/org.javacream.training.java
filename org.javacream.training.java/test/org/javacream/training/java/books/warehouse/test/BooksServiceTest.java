@@ -5,21 +5,27 @@ import java.util.List;
 import org.javacream.training.java.books.warehouse.api.Book;
 import org.javacream.training.java.books.warehouse.api.BooksService;
 import org.javacream.training.java.books.warehouse.impl.JdbcBooksService;
+import org.javacream.training.java.books.warehouse.impl.JpaBooksService;
 import org.javacream.training.java.books.warehouse.impl.MapBooksService;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class BooksServiceTest {
 
-	@Test
+	//@Test
 	public void testMapBooksService() {
 		BooksService booksService = new MapBooksService();
 		testBooksService(booksService);
 	}
 
-	@Test
+	//@Test
 	public void testJdbcBooksService() {
 		BooksService booksService = new JdbcBooksService();
+		testBooksService(booksService);
+	}
+	@Test
+	public void testJpaBooksService() {
+		BooksService booksService = new JpaBooksService();
 		testBooksService(booksService);
 	}
 
@@ -48,7 +54,7 @@ public class BooksServiceTest {
 		Assert.assertEquals(PRICE, searched2.getPrice(), 1e-12);
 
 		System.out.println(booksService.findAllAvailableBooks());
-		System.out.println(booksService.findByPriceRange(10.0, 20.0));
+		System.out.println(booksService.findByPriceRange(10.0, 30.0));
 		System.out.println(booksService.allBookTitles());
 
 		booksService.deleteById(isbn);

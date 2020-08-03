@@ -1,7 +1,15 @@
 package org.javacream.training.java.books.warehouse.api;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="JpaBooks")
 public class Book {
 
+	private Book() {}
+	@Id
 	private String isbn;
 	private String title;
 	private Double price;
