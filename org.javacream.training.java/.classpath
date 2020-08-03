@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="lib" path="db/h2-1.4.199.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

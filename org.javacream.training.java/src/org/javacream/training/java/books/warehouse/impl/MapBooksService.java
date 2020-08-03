@@ -14,7 +14,6 @@ public class MapBooksService implements BooksService {
 	private static final String PREFIX = "ISBN:";
 	private static final String COUNTRY_CODE = "-de";
 	private Random random = new Random(this.hashCode() + System.currentTimeMillis());
-
 	@Override
 	public String create(String title, Double price, Integer pages, Boolean available) {
 		Integer key = Math.abs(random.nextInt());
