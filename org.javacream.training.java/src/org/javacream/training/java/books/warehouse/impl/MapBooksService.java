@@ -1,6 +1,8 @@
 package org.javacream.training.java.books.warehouse.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -35,6 +37,11 @@ public class MapBooksService implements BooksService {
 	@Override
 	public void update(Book book) {
 		books.put(book.getIsbn(), book);
+	}
+
+	@Override
+	public List<Book> findAll() {
+		return new ArrayList<>(books.values());
 	}
 
 }

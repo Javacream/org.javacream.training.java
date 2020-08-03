@@ -1,5 +1,7 @@
 package org.javacream.training.java.books.warehouse.test;
 
+import java.util.List;
+
 import org.javacream.training.java.books.warehouse.api.Book;
 import org.javacream.training.java.books.warehouse.api.BooksService;
 import org.javacream.training.java.books.warehouse.impl.MapBooksService;
@@ -10,6 +12,9 @@ public class BooksServiceTest {
 
 	@Test public void testBooksService() {
 		BooksService booksService = new MapBooksService();
+		List<Book> booksList = booksService.findAll();
+		Assert.assertEquals(0, booksList.size());
+		
 		final String TITLE = "Java";
 		final Double INITIAL_PRICE = 19.99;
 		final Double PRICE = 29.99;
@@ -18,6 +23,8 @@ public class BooksServiceTest {
 		
 		String isbn = booksService.create(TITLE, INITIAL_PRICE, PAGES, AVAILABLE);
 		Assert.assertNotNull(isbn);
+		booksList = booksService.findAll();
+		Assert.assertEquals(1, booksList.size());
 		Book searched = booksService.findById(isbn);
 		Assert.assertNotNull(searched);
 		Assert.assertEquals(TITLE, searched.getTitle());

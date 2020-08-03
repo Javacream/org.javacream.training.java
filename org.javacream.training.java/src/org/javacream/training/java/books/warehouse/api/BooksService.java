@@ -1,5 +1,7 @@
 package org.javacream.training.java.books.warehouse.api;
 
+import java.util.List;
+
 public interface BooksService {
 	String create(String title, Double price, Integer pages, Boolean available);
 
@@ -9,4 +11,5 @@ public interface BooksService {
 
 	void update(Book book);
 
+	List<Book> findAll();
 }
