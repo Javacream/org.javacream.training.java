@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.javacream.training.java.books.warehouse.api.Book;
 import org.javacream.training.java.books.warehouse.api.BooksService;
@@ -23,7 +22,6 @@ public class JdbcBooksService implements BooksService {
 
 	private static final String PREFIX = "ISBN:";
 	private static final String COUNTRY_CODE = "-de";
-	private Random random = new Random(this.hashCode() + System.currentTimeMillis());
 	private PreparedStatement findAllTitlesStatement;
 	private PreparedStatement findByAvailabilityStatement;
 	private PreparedStatement findByPriceRangeStatement;
@@ -55,7 +53,6 @@ public class JdbcBooksService implements BooksService {
 	@Override
 	public String create(String title, Double price, Integer pages, Boolean available) {
 		try {
-			Integer key = Math.abs(random.nextInt());
 			String isbn = PREFIX + isbnGenerator.next() + COUNTRY_CODE;
 			insertStatement.setString(1, isbn);
 			insertStatement.setString(2, title);
