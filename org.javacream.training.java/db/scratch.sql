@@ -9,3 +9,7 @@ select * from books;
 select title from books where price > 25;
 select * from books where available = 'false';
 select * from books where title like '%i%';
+
+drop table ISBN if exists
+create table ISBN (isbn int)
+insert into ISBN values(100)

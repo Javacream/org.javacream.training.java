@@ -12,4 +12,9 @@ public interface BooksService {
 	void update(Book book);
 
 	List<Book> findAll();
+	
+	List<Book> findAllAvailableBooks();
+	List<Book> findByPriceRange(double min, double max);
+	List<String> allBookTitles();
+	
 }

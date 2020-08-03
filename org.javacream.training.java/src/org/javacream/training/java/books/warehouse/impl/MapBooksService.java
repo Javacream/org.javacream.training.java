@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.javacream.training.java.books.warehouse.api.Book;
 import org.javacream.training.java.books.warehouse.api.BooksService;
@@ -41,6 +42,21 @@ public class MapBooksService implements BooksService {
 	@Override
 	public List<Book> findAll() {
 		return new ArrayList<>(books.values());
+	}
+
+	@Override
+	public List<Book> findAllAvailableBooks() {
+		return books.values().stream().filter((book) -> book.getAvailable() == true).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<Book> findByPriceRange(double min, double max) {
+		return books.values().stream().filter((book) -> book.getPrice() >= min && book.getPrice() <= max).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<String> allBookTitles() {
+		return books.values().stream().map((book) -> book.getTitle()).collect(Collectors.toList());
 	}
 
 }

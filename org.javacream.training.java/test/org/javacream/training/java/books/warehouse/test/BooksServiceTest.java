@@ -11,28 +11,31 @@ import org.junit.Test;
 
 public class BooksServiceTest {
 
-	@Test public void testMapBooksService() {
+	@Test
+	public void testMapBooksService() {
 		BooksService booksService = new MapBooksService();
 		testBooksService(booksService);
 	}
-	@Test public void testJdbcBooksService() {
+
+	@Test
+	public void testJdbcBooksService() {
 		BooksService booksService = new JdbcBooksService();
 		testBooksService(booksService);
 	}
+
 	private void testBooksService(BooksService booksService) {
-	List<Book> booksList = booksService.findAll();
-		Assert.assertEquals(0, booksList.size());
-		
+		List<Book> booksList = booksService.findAll();
+		int size = booksList.size();
+
 		final String TITLE = "Java";
 		final Double INITIAL_PRICE = 19.99;
 		final Double PRICE = 29.99;
 		final Integer PAGES = 200;
 		final Boolean AVAILABLE = true;
-		
+
 		String isbn = booksService.create(TITLE, INITIAL_PRICE, PAGES, AVAILABLE);
 		Assert.assertNotNull(isbn);
-		booksList = booksService.findAll();
-		Assert.assertEquals(1, booksList.size());
+		Assert.assertEquals(size + 1, booksService.findAll().size());
 		Book searched = booksService.findById(isbn);
 		Assert.assertNotNull(searched);
 		Assert.assertEquals(TITLE, searched.getTitle());
@@ -43,11 +46,14 @@ public class BooksServiceTest {
 		Assert.assertNotNull(searched2);
 		Assert.assertEquals(TITLE, searched2.getTitle());
 		Assert.assertEquals(PRICE, searched2.getPrice(), 1e-12);
+
+		System.out.println(booksService.findAllAvailableBooks());
+		System.out.println(booksService.findByPriceRange(10.0, 20.0));
+		System.out.println(booksService.allBookTitles());
+
 		booksService.deleteById(isbn);
 		Book searched3 = booksService.findById(isbn);
 		Assert.assertNull(searched3);
-		
-		
 		
 	}
 }
