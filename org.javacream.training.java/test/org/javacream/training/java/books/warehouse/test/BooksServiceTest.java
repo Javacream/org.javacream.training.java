@@ -4,15 +4,23 @@ import java.util.List;
 
 import org.javacream.training.java.books.warehouse.api.Book;
 import org.javacream.training.java.books.warehouse.api.BooksService;
+import org.javacream.training.java.books.warehouse.impl.JdbcBooksService;
 import org.javacream.training.java.books.warehouse.impl.MapBooksService;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class BooksServiceTest {
 
-	@Test public void testBooksService() {
+	@Test public void testMapBooksService() {
 		BooksService booksService = new MapBooksService();
-		List<Book> booksList = booksService.findAll();
+		testBooksService(booksService);
+	}
+	@Test public void testJdbcBooksService() {
+		BooksService booksService = new JdbcBooksService();
+		testBooksService(booksService);
+	}
+	private void testBooksService(BooksService booksService) {
+	List<Book> booksList = booksService.findAll();
 		Assert.assertEquals(0, booksList.size());
 		
 		final String TITLE = "Java";
