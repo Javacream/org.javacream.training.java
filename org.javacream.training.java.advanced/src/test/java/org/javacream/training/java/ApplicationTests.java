@@ -1,4 +1,4 @@
-package org.javacream.training.java.advanced;
+package org.javacream.training.java;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
