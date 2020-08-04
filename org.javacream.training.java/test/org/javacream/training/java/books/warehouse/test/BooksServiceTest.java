@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.javacream.training.java.books.warehouse.api.Book;
 import org.javacream.training.java.books.warehouse.api.BooksService;
-import org.javacream.training.java.books.warehouse.impl.JdbcBooksService;
 import org.javacream.training.java.books.warehouse.impl.JpaBooksService;
+import org.javacream.training.java.books.warehouse.impl.JdbcBooksService;
 import org.javacream.training.java.books.warehouse.impl.MapBooksService;
 import org.junit.Assert;
 import org.junit.Test;

@@ -8,6 +8,7 @@ import javax.persistence.Table;
 @Table(name="JpaBooks")
 public class Book {
 
+	@SuppressWarnings("unused")
 	private Book() {}
 	@Id
 	private String isbn;

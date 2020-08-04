@@ -17,7 +17,7 @@ public class JpaBooksService implements BooksService {
 	private static final String PREFIX = "ISBN:";
 	private static final String COUNTRY_CODE = "-de";
 	private Random random = new Random(this.hashCode() + System.currentTimeMillis());
-	
+
 	public JpaBooksService() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("org.javacream");
 		entityManager = factory.createEntityManager();
@@ -26,76 +26,79 @@ public class JpaBooksService implements BooksService {
 	public String create(String title, Double price, Integer pages, Boolean available) {
 		Integer key = Math.abs(random.nextInt());
 		String isbn = PREFIX + key + COUNTRY_CODE;
-		Book newBook = new Book (isbn, title, price, pages, available);
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
+		Book newBook = new Book(isbn, title, price, pages, available);
+		EntityTransaction transactionsContext = entityManager.getTransaction();
+		transactionsContext.begin();
 		entityManager.persist(newBook);
-		transaction.commit();
+		transactionsContext.commit();
 		return isbn;
 	}
 
 	@Override
 	public Book findById(String isbn) {
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
-		Book result =  entityManager.find(Book.class, isbn);
-		transaction.commit();
-		return result;
-		
+		EntityTransaction transactionsContext = entityManager.getTransaction();
+		transactionsContext.begin();
+		Book book = entityManager.find(Book.class, isbn);
+		transactionsContext.commit();
+		return book;
 	}
 
 	@Override
 	public void deleteById(String isbn) {
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
+		EntityTransaction transactionsContext = entityManager.getTransaction();
+		transactionsContext.begin();
 		entityManager.remove(entityManager.getReference(Book.class, isbn));
-		transaction.commit();
+		transactionsContext.commit();
+
 	}
 
 	@Override
 	public void update(Book book) {
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
+		EntityTransaction transactionsContext = entityManager.getTransaction();
+		transactionsContext.begin();
 		entityManager.merge(book);
-		transaction.commit();
+		transactionsContext.commit();
 	}
 
 	@Override
 	public List<Book> findAll() {
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
-		List<Book> result = entityManager.createQuery("select b from Book as b", Book.class).getResultList();
-		transaction.commit();
+		EntityTransaction transactionsContext = entityManager.getTransaction();
+		transactionsContext.begin();
+		TypedQuery<Book> query = entityManager.createQuery("select b from Book as b", Book.class);
+		List<Book> result = query.getResultList();
+		transactionsContext.commit();
 		return result;
 	}
 
 	@Override
 	public List<Book> findAllAvailableBooks() {
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
-		List<Book> result = entityManager.createQuery("select b from Book as b where b.available = true", Book.class).getResultList();
-		transaction.commit();
+		EntityTransaction transactionsContext = entityManager.getTransaction();
+		transactionsContext.begin();
+		TypedQuery<Book> query = entityManager.createQuery("select b from Book as b where b.available = true", Book.class);
+		List<Book> result = query.getResultList();
+		transactionsContext.commit();
 		return result;
 	}
 
 	@Override
 	public List<Book> findByPriceRange(double min, double max) {
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
-		TypedQuery<Book> query = entityManager.createQuery("select b from Book as b where b.price  >= :min and b.price <= :max", Book.class);
+		EntityTransaction transactionsContext = entityManager.getTransaction();
+		transactionsContext.begin();
+		TypedQuery<Book> query = entityManager.createQuery("select b from Book as b where b.price >= :min and b.price <= :max", Book.class);
 		query.setParameter("min", min);
 		query.setParameter("max", max);
 		List<Book> result = query.getResultList();
-		transaction.commit();
+		transactionsContext.commit();
 		return result;
 	}
 
 	@Override
 	public List<String> allBookTitles() {
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
-		List<String> result = entityManager.createQuery("select b.title from Book as b", String.class).getResultList();
-		transaction.commit();
+		EntityTransaction transactionsContext = entityManager.getTransaction();
+		transactionsContext.begin();
+		TypedQuery<String> query = entityManager.createQuery("select b.title from Book as b", String.class);
+		List<String> result = query.getResultList();
+		transactionsContext.commit();
 		return result;
 	}
 
