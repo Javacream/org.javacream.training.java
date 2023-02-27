@@ -33,8 +33,11 @@ public class FunctionalDemoTest {
         Consumer<String> c2 = (s) -> System.out.println(s);
         names.forEach(c2);
 
-        String message = "Hello";
-        System.out.println(message);
-        System.out.println("Hello");
+        Consumer<String> c3 = System.out::println;
+        names.forEach(c3);
+        names.forEach(System.out::println);
     }
+
+
+
 }

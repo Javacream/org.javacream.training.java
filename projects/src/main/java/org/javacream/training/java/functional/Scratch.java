@@ -27,6 +27,14 @@ public class Scratch {
     }
 
 
+    public void doListTestMethodReference() {
+        DemoInterface1 impl = this::x;
+    }
+
+    private Integer x (String s){
+        return 42;
+    }
+
 }
 
 @FunctionalInterface
