@@ -23,6 +23,7 @@ public class SimpleTest {
     public void demoBook(){
         Book b1 = new Book("ISBN1", "Title", 19.99);
         var b2 = new Book("ISBN1", "Title", 19.99);//Type Inference, die linke Seite ist vom Typ durch die rechte vollständig definiert
+        //b2 = "Hello";
     }
 
 
