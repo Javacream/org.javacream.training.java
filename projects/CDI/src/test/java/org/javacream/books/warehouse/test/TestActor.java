@@ -5,6 +5,7 @@ import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BooksService;
 import org.junit.jupiter.api.Assertions;
+import org.springframework.boot.test.context.SpringBootTest;
 
 public class TestActor {
 

@@ -1,15 +1,17 @@
 package org.javacream.books.warehouse.test;
 
-import org.javacream.ApplicationContext;
 import org.javacream.books.order.api.Order;
 import org.javacream.books.order.api.OrderService;
 import org.javacream.books.order.api.OrderStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 public class OrderTest {
 
-        private OrderService orderService = ApplicationContext.getOrderService();
+        @Autowired private OrderService orderService;
 
         @Test
         public void order40Isbn1CreatesOkOrder(){

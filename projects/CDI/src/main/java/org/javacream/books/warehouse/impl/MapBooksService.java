@@ -11,27 +11,19 @@ import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
-
+@Service
 public class MapBooksService implements BooksService {
 
+	@Autowired
 	private IsbnGenerator isbnGenerator;
+	@Autowired
 	private Map<String, Book> books;
+	@Autowired
 	private StoreService storeService;
-	//Default Constructor, der wird immer aufgerufen
-	{
-		books = new HashMap<String, Book>();
-	}
-
-	
-	public void setStoreService(StoreService storeService) {
-		this.storeService = storeService;
-	}
-
-	public void setIsbnGenerator(IsbnGenerator isbnGenerator) {
-		this.isbnGenerator = isbnGenerator;
-	}
 
 	public String newBook(String title) throws BookException {
 		String isbn = isbnGenerator.next();
@@ -73,8 +65,5 @@ public class MapBooksService implements BooksService {
 	public Collection<Book> findAllBooks() {
 		return SerializationUtils.clone(new ArrayList<Book>(books.values()));
 	}
-	public void setBooks(Map<String, Book> books) {
-		this.books = books;
-	}
-	
+
 }

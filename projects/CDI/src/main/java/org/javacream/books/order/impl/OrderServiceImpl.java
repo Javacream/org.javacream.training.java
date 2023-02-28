@@ -8,24 +8,17 @@ import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
 import org.javacream.util.IdGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class OrderServiceImpl implements OrderService {
 
-    public void setBooksService(BooksService booksService) {
-        this.booksService = booksService;
-    }
-
-    public void setStoreService(StoreService storeService) {
-        this.storeService = storeService;
-    }
-
-    public void setIdGenerator(IdGenerator idGenerator) {
-        this.idGenerator = idGenerator;
-    }
-
-    private BooksService booksService;
+        @Autowired
+        private BooksService booksService;
+        @Autowired
         private StoreService storeService;
+        @Autowired
         private IdGenerator idGenerator;
         @Override
         public Order order(String isbn, int amount) {
