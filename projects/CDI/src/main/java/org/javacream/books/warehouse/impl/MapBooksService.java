@@ -19,7 +19,7 @@ public class MapBooksService implements BooksService {
 	private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
 	private StoreService storeService;
-	
+	//Default Constructor, der wird immer aufgerufen
 	{
 		books = new HashMap<String, Book>();
 	}

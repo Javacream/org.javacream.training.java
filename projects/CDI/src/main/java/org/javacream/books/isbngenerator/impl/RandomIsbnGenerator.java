@@ -3,6 +3,7 @@ package org.javacream.books.isbngenerator.impl;
 import java.util.Random;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.util.IdGenerator;
 
 public class RandomIsbnGenerator implements IsbnGenerator {
 
@@ -15,14 +16,14 @@ public class RandomIsbnGenerator implements IsbnGenerator {
 	public void setCountryCode(String suffix) {
 		this.countryCode = suffix;
 	}
-	private Random random;
-	
-	{
-		random = new Random(this.hashCode() + System.currentTimeMillis());
+	private IdGenerator idGenerator;
+
+	public void setIdGenerator(IdGenerator idGenerator) {
+		this.idGenerator = idGenerator;
 	}
-	
+
 	public String next(){
-		return prefix + random.nextInt() + countryCode;
+		return prefix + idGenerator.nextId() + countryCode;
 	}
 
 	public String getPrefix(){
