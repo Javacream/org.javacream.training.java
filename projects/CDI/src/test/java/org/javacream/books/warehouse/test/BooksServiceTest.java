@@ -13,10 +13,12 @@ public class BooksServiceTest {
 	@Test
 	public void testBusinessObjects() {
 		TestActor.doTest(booksService);
-		
-	
 	}
 
-	
+	@Test
+	public void testGroupByTitle() {
+		System.out.println(booksService.findAllGroupByTitle());
+	}
+
 
 }
