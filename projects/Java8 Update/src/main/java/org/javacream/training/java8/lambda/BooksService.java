@@ -35,5 +35,8 @@ public class BooksService {
     public List<Book> findByPriceRange(double min, double max){
         return findAll().stream().filter((b) -> b.getPrice() > min && b.getPrice() < max).collect(Collectors.toList());
     }
+    public Map<Integer, List<Book>> findAllGroupByPages(){
+        return findAll().stream().collect((Collectors.groupingBy(Book::getPages)));
+    }
 
 }

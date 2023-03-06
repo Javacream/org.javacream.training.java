@@ -10,5 +10,7 @@ public class BooksTest {
         System.out.println(booksService.findAllIsbns());
         System.out.println(booksService.findByTitle("final"));
         System.out.println(booksService.findByPriceRange(10, 30));
+        System.out.println(booksService.findAllGroupByPages());
+
     }
 }
