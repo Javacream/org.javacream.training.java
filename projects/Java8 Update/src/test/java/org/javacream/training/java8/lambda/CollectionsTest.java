@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class CollectionsTest {
     @Test
@@ -11,6 +12,9 @@ public class CollectionsTest {
         List<String> names = new ArrayList<>();
         names.add("Emil");
         names.add("Fritz");
-        names.forEach((s) -> System.out.println(s));
+
+        Consumer<String> consumer = (s) -> System.out.println(s);
+
+        names.forEach(consumer);
     }
 }
