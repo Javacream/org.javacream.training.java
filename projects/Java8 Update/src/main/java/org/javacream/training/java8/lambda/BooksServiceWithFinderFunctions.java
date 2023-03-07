@@ -36,7 +36,7 @@ public class BooksServiceWithFinderFunctions {
         return new ArrayList<>(books.values());
     }
     //public Supplier<List<Book>> findAllSupplier = () ->  new ArrayList<>(books.values());
-    public Supplier<List<Book>> findAllSupplier2 = () ->  this.findAll();
+    public Supplier<List<Book>> findAllSupplier = () ->  this.findAll();
     public Supplier<List<Book>> findAllSupplierMethodReference = this::findAll;
 
     public List<String> findAllIsbns(){
