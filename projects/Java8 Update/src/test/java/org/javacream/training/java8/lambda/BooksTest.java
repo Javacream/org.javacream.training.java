@@ -17,6 +17,16 @@ public class BooksTest {
         System.out.println(booksService.findAllGroupByPages());
 
     }
+    //@Test
+    public void testBooksServiceWithSupplier(){
+        BooksServiceWithFinderFunctions booksService = new BooksServiceWithFinderFunctions(new SimpleCounterIsbnGenerator());
+        booksService.addBookFunction.addBook("spring", 19.99, 250);
+        booksService.addBookFunction.addBook("TypeScript", 49.99, 250);
+        booksService.addBookFunction.addBook("Angular", 19.99, 250);
+        System.out.println(booksService.findAllSupplier.get());
+    }
+
+
     @Test public void testBooksServiceWithFunctionalIsbnGenerator() {
         class Counter{
             private int counter = 0;
