@@ -32,6 +32,7 @@ public class BooksServiceWithFinderFunctions {
         books.put(isbn, book);
         return isbn;
     };
+    public AddBookFunction addBookFunctionFunction = this::add;
     public List<Book> findAll(){
         return new ArrayList<>(books.values());
     }

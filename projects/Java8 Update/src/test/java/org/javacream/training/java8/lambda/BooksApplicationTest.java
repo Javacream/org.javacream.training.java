@@ -7,5 +7,6 @@ public class BooksApplicationTest {
         BooksServiceWithFinderFunctions booksServiceWithFinderFunctions = new BooksServiceWithFinderFunctions(() -> "ISBN");
         booksApplication.workWithBookListSupplier(booksServiceWithFinderFunctions.findAllSupplier);
         booksApplication.workWithBookListSupplier(booksServiceWithFinderFunctions::findAll);
+        SomethingNew sn = booksServiceWithFinderFunctions::findAll;
     }
 }
