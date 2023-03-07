@@ -31,7 +31,7 @@ public class BooksServiceWithFinderFunctions {
         Book book = new Book(isbn, title, price, pages);
         books.put(isbn, book);
         return isbn;
-    }
+    };
     public List<Book> findAll(){
         return new ArrayList<>(books.values());
     }
