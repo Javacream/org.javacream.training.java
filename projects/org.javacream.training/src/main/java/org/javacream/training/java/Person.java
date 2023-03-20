@@ -8,7 +8,7 @@ public class Person {
     private String firstname;
     private Integer height;
     private Double weight;
-
+    private Person partner;
     public String introduce(){
         return "Person: lastname=" + this.lastname + ", firstname=" + this.firstname + ", height=" + this.height + ", weight=" + this.weight;
     }
@@ -18,6 +18,27 @@ public class Person {
         this.firstname = firstname;
         this.height = height;
         this.weight = weight;
+    }
+
+
+    public Boolean marry(Person newPartner){
+        if (newPartner != null && newPartner != this && newPartner.partner == null && this.partner == null) {
+            this.partner = newPartner;
+            newPartner.partner = this;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Boolean divorce(){
+        if (this.partner != null) {
+            this.partner.partner = null;
+            this.partner = null;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String getLastname() {
