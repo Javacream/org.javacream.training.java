@@ -10,7 +10,7 @@ public class Person {
     private Double weight;
 
     public String introduce(){
-        return "Person: lastname=" + this.lastname;
+        return "Person: lastname=" + this.lastname + ", firstname=" + this.firstname + ", height=" + this.height + ", weight=" + this.weight;
     }
 
     public Person(String lastname, String firstname, Integer height, Double weight) {

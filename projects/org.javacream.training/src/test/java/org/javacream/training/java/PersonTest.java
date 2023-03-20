@@ -20,4 +20,15 @@ public class PersonTest {
         Assert.assertEquals(EXPECTED_FIRSTNAME, p.getFirstname());
     }
 
+    @Test
+    public void testIntroduce(){
+        String LASTNAME = "Sawitzki";
+        String FIRSTNAME = "Rainer";
+        Integer HEIGHT = 183;
+        Double WEIGHT = 81.1;
+        String EXPECTED_INTRODUCTION = "Person: lastname=Sawitzki, firstname=Rainer, height=183, weight=81.1";
+        Person p = new Person(LASTNAME, FIRSTNAME, HEIGHT, WEIGHT);
+        Assert.assertEquals(EXPECTED_INTRODUCTION, p.introduce());
+
+    }
 }
