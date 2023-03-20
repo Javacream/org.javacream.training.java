@@ -1,5 +1,7 @@
 package org.javacream.training.java;
 
+import java.util.Objects;
+
 public class Person {
 
     private String lastname;
@@ -11,4 +13,65 @@ public class Person {
         return "Person: lastname=" + this.lastname;
     }
 
+    public Person(String lastname, String firstname, Integer height, Double weight) {
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.height = height;
+        this.weight = weight;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "lastname='" + lastname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(lastname, person.lastname) && Objects.equals(firstname, person.firstname) && Objects.equals(height, person.height) && Objects.equals(weight, person.weight);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lastname, firstname, height, weight);
+    }
 }
