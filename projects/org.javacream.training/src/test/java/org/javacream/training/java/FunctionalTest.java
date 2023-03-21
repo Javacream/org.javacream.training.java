@@ -8,7 +8,7 @@ public class FunctionalTest {
 
     @Test public void testPersonIntroducer(){
         Person p = new Person("A", "B", 100, 10.0);
-        PersonIntroducer pi = person -> System.out.println(p);
+        PersonIntroducer pi = System.out::println;
         pi.introducePerson(p);
         }
     interface PersonIntroducer{
