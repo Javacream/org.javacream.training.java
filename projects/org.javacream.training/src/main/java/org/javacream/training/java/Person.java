@@ -1,6 +1,6 @@
 package org.javacream.training.java;
 
-public class Person {
+public class Person implements Addressable{
 
     private String lastname;
     private String firstname;
@@ -88,6 +88,7 @@ public class Person {
         this.weight = weight;
     }
 
+    @Override
     public Address getAddress() {
         return address;
     }
