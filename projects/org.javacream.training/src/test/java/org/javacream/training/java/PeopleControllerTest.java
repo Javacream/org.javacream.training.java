@@ -8,14 +8,14 @@ public class PeopleControllerTest {
 
     @Test
     public void create() {
-        PeopleController pc = new PeopleController();
+        PeopleController pc = PeopleController.getInstance();
         Person p = pc.create("A", "B", 100, 10.0);
         assertEquals("A", p.getLastname());
     }
 
     @Test
     public void findById() {
-        PeopleController pc = new PeopleController();
+        PeopleController pc = PeopleController.getInstance();
         Person p = pc.create("A", "B", 100, 10.0);
         Person searchResult = pc.findById(p.getId());
         assertTrue(p == searchResult);
@@ -25,7 +25,7 @@ public class PeopleControllerTest {
 
     @Test
     public void update() {
-        PeopleController pc = new PeopleController();
+        PeopleController pc = PeopleController.getInstance();
         Person p = pc.create("A", "B", 100, 10.0);
         Address a = new Address("C", "D");
         pc.update(p.getId(), a);
@@ -36,7 +36,7 @@ public class PeopleControllerTest {
 
     @Test
     public void deleteById() {
-        PeopleController pc = new PeopleController();
+        PeopleController pc = PeopleController.getInstance();
         Person p = pc.create("A", "B", 100, 10.0);
         Person searchResult = pc.findById(p.getId());
         assertTrue(p == searchResult);
