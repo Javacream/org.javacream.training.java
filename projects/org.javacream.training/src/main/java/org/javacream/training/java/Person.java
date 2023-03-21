@@ -1,7 +1,5 @@
 package org.javacream.training.java;
 
-import java.util.Objects;
-
 public class Person {
 
     private String lastname;
@@ -21,7 +19,7 @@ public class Person {
     }
 
 
-    public Boolean marry(Person newPartner){
+    public final Boolean marry(Person newPartner){
         if (newPartner != null && newPartner != this && newPartner.partner == null && this.partner == null) {
             this.partner = newPartner;
             newPartner.partner = this;
