@@ -83,16 +83,14 @@ public class Person {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(lastname, person.lastname) && Objects.equals(firstname, person.firstname) && Objects.equals(height, person.height) && Objects.equals(weight, person.weight);
+    public Address getAddress() {
+        return address;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(lastname, firstname, height, weight);
+    public void setAddress(Address address) {
+        this.address = address;
     }
+
+    private Address address;
+
 }

@@ -3,8 +3,6 @@ package org.javacream.training.java;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class PersonTest {
 
     @Test public void creatingAPersonWithLastnameSawitzkiCreatesAPersonWithLastnameSawitzki(){
@@ -29,6 +27,16 @@ public class PersonTest {
         final String EXPECTED_INTRODUCTION = "Person: lastname=Sawitzki, firstname=Rainer, height=183, weight=81.1";
         Person p = new Person(LASTNAME, FIRSTNAME, HEIGHT, WEIGHT);
         Assert.assertEquals(EXPECTED_INTRODUCTION, p.introduce());
+
+    }
+
+    @Test public void testEquality(){
+        Person p1= new Person("LASTNAME", "FIRSTNAME", 100, 10.0);
+        Person p2= new Person("LASTNAME", "FIRSTNAME", 100, 10.0);
+        Assert.assertTrue(p1 == p1);
+        Assert.assertFalse(p1 == p2);
+        Assert.assertFalse(p1.equals(p2));
+
 
     }
 }
