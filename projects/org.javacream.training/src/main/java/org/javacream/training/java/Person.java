@@ -17,7 +17,24 @@ public class Person {
         this.height = height;
         this.weight = weight;
     }
+    public Person(Integer id, String lastname, String firstname, Integer height, Double weight) {
+        this(lastname, firstname, height, weight);
+        this.id = id;
+    }
 
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "lastname='" + lastname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", partner=" + partner +
+                ", address=" + address +
+                ", id=" + id +
+                '}';
+    }
 
     public final Boolean marry(Person newPartner){
         if (newPartner != null && newPartner != this && newPartner.partner == null && this.partner == null) {
@@ -71,16 +88,6 @@ public class Person {
         this.weight = weight;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "lastname='" + lastname + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", height=" + height +
-                ", weight=" + weight +
-                '}';
-    }
-
     public Address getAddress() {
         return address;
     }
@@ -91,4 +98,9 @@ public class Person {
 
     private Address address;
 
+    public Integer getId() {
+        return id;
+    }
+
+    private Integer id;
 }
