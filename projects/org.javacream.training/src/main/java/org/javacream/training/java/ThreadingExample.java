@@ -33,5 +33,6 @@ public class ThreadingExample {
         });
         System.out.println(Thread.currentThread());
         System.out.println("finished main");
+        executorService.shutdown();
     }
 }
