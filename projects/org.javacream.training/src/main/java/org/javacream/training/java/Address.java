@@ -1,8 +1,19 @@
 package org.javacream.training.java;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Address {
+public class Address implements Serializable {
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Address(){
+
+    }
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
     private String city;
     private String street;
