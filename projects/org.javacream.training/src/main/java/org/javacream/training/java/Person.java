@@ -13,6 +13,9 @@ public class Person implements Addressable, Serializable {
         return "Person: lastname=" + this.lastname + ", firstname=" + this.firstname + ", height=" + this.height + ", weight=" + this.weight;
     }
 
+    public Person() {
+    }
+
     public Person(String lastname, String firstname, Integer height, Double weight) {
         this.lastname = lastname;
         this.firstname = firstname;
