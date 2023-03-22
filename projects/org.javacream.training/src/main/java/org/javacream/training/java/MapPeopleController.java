@@ -14,7 +14,7 @@ public class MapPeopleController implements PeopleController {
     private Integer counter = 0;
     @Override
     public Person create(String lastname, String firstname, Integer height, Double weight){
-        logger.info("create a new Person");
+        //logger.info("create a new Person");
         counter++;
         Person p = new Person(counter, lastname, firstname, height, weight);
         peopleMap.put(counter, p);
@@ -23,7 +23,8 @@ public class MapPeopleController implements PeopleController {
     @Override
     public Person findById(Integer id){
         Person p = peopleMap.get(id);
-        return SerializationUtils.clone(p);
+        //return SerializationUtils.clone(p);
+        return p;
     }
     @Override
     public void update(Integer id, Address newAddress){
