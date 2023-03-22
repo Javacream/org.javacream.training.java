@@ -1,11 +1,10 @@
 package org.javacream.training.java;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.Arrays;
 
 public class JacksonTest {
 
@@ -19,8 +18,8 @@ public class JacksonTest {
     @Test public void readJson() throws JsonProcessingException {
         String json = "[{\"lastname\":\"Sawitzki\",\"firstname\":\"Rainer\",\"height\":100,\"weight\":10.0,\"address\":{\"city\":\"München\",\"street\":\"Marienplatz\"},\"id\":42}, {\"lastname\":\"Sawitzki\",\"firstname\":\"Rainer\",\"height\":100,\"weight\":10.0,\"address\":{\"city\":\"München\",\"street\":\"Marienplatz\"},\"id\":43}]";
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Person> people = objectMapper.readValue(json, new TypeReference<List<Person>>(){});
-        people.forEach(System.out::println);
+        Person[] people = objectMapper.readValue(json, Person[].class);
+        Arrays.asList(people).forEach(System.out::println);
     }
     //
 }
