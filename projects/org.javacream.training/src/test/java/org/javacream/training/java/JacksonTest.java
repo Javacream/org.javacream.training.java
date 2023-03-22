@@ -16,7 +16,7 @@ public class JacksonTest {
         System.out.println(json);
     }
     @Test public void readJson() throws JsonProcessingException {
-        String json = "[{\"lastname\":\"Sawitzki\",\"firstname\":\"Rainer\",\"height\":100,\"weight\":10.0,\"address\":{\"city\":\"München\",\"street\":\"Marienplatz\"},\"id\":42}, {\"lastname\":\"Sawitzki\",\"firstname\":\"Rainer\",\"height\":100,\"weight\":10.0,\"address\":{\"city\":\"München\",\"street\":\"Marienplatz\"},\"id\":43}]";
+        String json = "[{\"firstname\":\"Rainer\", \"lastname\":\"Sawitzki\",\"height\":100,\"weight\":10.0,\"address\":{\"city\":\"München\",\"street\":\"Marienplatz\"},\"id\":42}, {\"lastname\":\"Sawitzki\",\"firstname\":\"Rainer\",\"height\":100,\"weight\":10.0,\"address\":{\"city\":\"München\",\"street\":\"Marienplatz\"},\"id\":43}]";
         ObjectMapper objectMapper = new ObjectMapper();
         Person[] people = objectMapper.readValue(json, Person[].class);
         Arrays.asList(people).forEach(System.out::println);

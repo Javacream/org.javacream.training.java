@@ -1,6 +1,8 @@
 package org.javacream.training.java;
 
 import org.apache.commons.lang3.SerializationUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,9 +10,11 @@ import java.util.Map;
 public class MapPeopleController implements PeopleController {
 
     private Map<Integer, Person> peopleMap = new HashMap<>();
+    Logger logger = LoggerFactory.getLogger(MapPeopleController.class);
     private Integer counter = 0;
     @Override
     public Person create(String lastname, String firstname, Integer height, Double weight){
+        logger.info("create a new Person");
         counter++;
         Person p = new Person(counter, lastname, firstname, height, weight);
         peopleMap.put(counter, p);
