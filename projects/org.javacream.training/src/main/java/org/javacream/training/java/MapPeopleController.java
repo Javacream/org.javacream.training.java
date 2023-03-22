@@ -1,5 +1,7 @@
 package org.javacream.training.java;
 
+import org.apache.commons.lang3.SerializationUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +18,8 @@ public class MapPeopleController implements PeopleController {
     }
     @Override
     public Person findById(Integer id){
-        return peopleMap.get(id);
+        Person p = peopleMap.get(id);
+        return SerializationUtils.clone(p);
     }
     @Override
     public void update(Integer id, Address newAddress){

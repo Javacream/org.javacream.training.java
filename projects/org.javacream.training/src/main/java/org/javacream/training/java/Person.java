@@ -1,6 +1,8 @@
 package org.javacream.training.java;
 
-public class Person implements Addressable{
+import java.io.Serializable;
+
+public class Person implements Addressable, Serializable {
 
     private String lastname;
     private String firstname;

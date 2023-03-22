@@ -1,7 +1,6 @@
 package org.javacream.training.java;
 
-import com.sun.nio.sctp.PeerAddressChangeNotification;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.Consumer;
 import java.util.function.Function;

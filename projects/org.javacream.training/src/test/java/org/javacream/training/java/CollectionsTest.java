@@ -1,9 +1,11 @@
 package org.javacream.training.java;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class CollectionsTest {
 
@@ -14,9 +16,9 @@ public class CollectionsTest {
         strings.add(s1);
         strings.add(s2);
         strings.add(s1);
-        Assert.assertEquals(3, strings.size());
-        Assert.assertEquals("Hello", strings.get(0));
-        Assert.assertEquals("World", strings.get(1));
+        assertEquals(3, strings.size());
+        assertEquals("Hello", strings.get(0));
+        assertEquals("World", strings.get(1));
         for(String s: strings){
             System.out.println(s);
         }
@@ -28,7 +30,7 @@ public class CollectionsTest {
         strings.add(s1);
         strings.add(s2);
         strings.add(s1);
-        Assert.assertEquals(2, strings.size());
+        assertEquals(2, strings.size());
         //Assert.assertEquals("Hello", strings.get(0));
         //Assert.assertEquals("World", strings.get(1));
         for(String s: strings){
@@ -41,8 +43,8 @@ public class CollectionsTest {
         postalCodeToCity.put(81371, "München");
         postalCodeToCity.put(30000, "Berlin");
         postalCodeToCity.put(40000, "Hamburg");
-        Assert.assertEquals("Berlin", postalCodeToCity.get(30000));
-        Assert.assertNull(postalCodeToCity.get(12345));
+        assertEquals("Berlin", postalCodeToCity.get(30000));
+        assertNull(postalCodeToCity.get(12345));
         for (Integer i: postalCodeToCity.keySet()){
             System.out.println(i + ":" + postalCodeToCity.get(i));
         }
@@ -58,9 +60,9 @@ public class CollectionsTest {
         addresses.add(a1);
         addresses.add(a2);
         addresses.add(a3);
-        Assert.assertEquals(3, addresses.size());
-        Assert.assertEquals(a1, addresses.get(0));
-        Assert.assertEquals(a2, addresses.get(1));
+        assertEquals(3, addresses.size());
+        assertEquals(a1, addresses.get(0));
+        assertEquals(a2, addresses.get(1));
         for(Address a: addresses){
             System.out.println(a);
         }
@@ -73,7 +75,7 @@ public class CollectionsTest {
         addresses.add(a1);
         addresses.add(a2);
         addresses.add(a3);
-        Assert.assertEquals(2, addresses.size());
+        assertEquals(2, addresses.size());
         //Assert.assertEquals("Hello", addresses.get(0));
         //Assert.assertEquals("World", addresses.get(1));
         for(Address a: addresses){
@@ -88,9 +90,9 @@ public class CollectionsTest {
         people.add(p1);
         people.add(p2);
         people.add(p3);
-        Assert.assertEquals(3, people.size());
-        Assert.assertEquals(p1, people.get(0));
-        Assert.assertEquals(p2, people.get(1));
+        assertEquals(3, people.size());
+        assertEquals(p1, people.get(0));
+        assertEquals(p2, people.get(1));
         for(Person p: people){
             System.out.println(p);
         }
@@ -103,7 +105,7 @@ public class CollectionsTest {
         people.add(p1);
         people.add(p2);
         people.add(p3);
-        Assert.assertEquals(3, people.size());
+        assertEquals(3, people.size());
         //Assert.assertEquals("Hello", strings.get(0));
         //Assert.assertEquals("World", strings.get(1));
         for(Person p: people){
