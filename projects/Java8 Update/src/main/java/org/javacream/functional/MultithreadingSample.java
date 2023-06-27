@@ -6,6 +6,13 @@ import java.util.concurrent.Executors;
 public class MultithreadingSample {
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
+    public void doSomethingWithFunctionDefinition(){
+        String data = "declared in doSomething";
+        Runnable r = () -> {
+            System.out.println("in run, data=" + data);
+        };
+        executorService.submit(r);
+    }
 
     public void doSomethingWithFunctionDefinitionCompact(){
         String data = "declared in doSomething";
