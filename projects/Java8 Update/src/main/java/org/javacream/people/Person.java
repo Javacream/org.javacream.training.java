@@ -6,7 +6,7 @@ public class Person {
     private String name;
     private Double weight;
     //############### Generated Code Start
-    public PeopleServiceImpl(String name, Double weight) {
+    public Person(String name, Double weight) {
         this.name = name;
         this.weight = weight;
     }
@@ -31,7 +31,7 @@ public class Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PeopleServiceImpl that = (PeopleServiceImpl) o;
+        Person that = (Person) o;
         return Objects.equals(getName(), that.getName()) && Objects.equals(getWeight(), that.getWeight());
     }
 
@@ -42,7 +42,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "PeopleServiceImpl{" +
+        return "Person{" +
                 "name='" + name + '\'' +
                 ", weight=" + weight +
                 '}';
