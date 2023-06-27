@@ -1,4 +1,4 @@
-package org.javacream.oop;
+package org.javacream.functional;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
