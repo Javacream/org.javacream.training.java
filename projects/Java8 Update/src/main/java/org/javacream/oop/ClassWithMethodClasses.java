@@ -7,7 +7,7 @@ public class ClassWithMethodClasses {
         System.out.println(this.data);
     }
 
-    public void methodWithClassDefinition(){
+    public MethodClass2 methodWithClassDefinition(){
         String methodData = "Demo";
         class MethodClass1{
 
@@ -20,6 +20,7 @@ public class ClassWithMethodClasses {
         }
 
         MethodClass2 instance = new MethodClass2();
-        instance.inMethodClass();
+        //Closure: Die Rückgabe-Instanz hat immer noch Zugriff auf die "loakle" Variable method2Data
+        return instance;
     }
 }
