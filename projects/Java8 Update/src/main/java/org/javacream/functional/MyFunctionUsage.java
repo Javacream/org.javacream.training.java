@@ -8,15 +8,5 @@ public class MyFunctionUsage {
         };
         System.out.println(myFunction.fn("Hugo", 42));
     }
-
-
-
 }
 
-class MyFunctionImpl implements MyFunction{
-
-    @Override
-    public boolean fn(String p1, Integer p2) {
-        return false;
-    }
-}
