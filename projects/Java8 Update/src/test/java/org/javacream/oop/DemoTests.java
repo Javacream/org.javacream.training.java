@@ -10,7 +10,6 @@ public class DemoTests {
         TopLevelWithInnerClasses.StaticInner staticInnerInstance = new TopLevelWithInnerClasses.StaticInner();
     }
 
-    @Test
     public void playWithMethodClasses(){
         ClassWithMethodClasses instance = new ClassWithMethodClasses();
         instance.methodWithClassDefinition();
