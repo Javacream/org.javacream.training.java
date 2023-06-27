@@ -2,7 +2,7 @@
 
 * Referent: 
   * Rainer Sawitzki
-  * eMail: training@rainer-sawitzki.de
+  * eMail: rainer.sawitzki@gmail.com
   * [Javacream](http://javacream.org)
   
 * [Digitales Flipchart](https://docs.google.com/presentation/d/15KoC-UiHvJE7w3KBg9y6rHBLGiuxSkigzKUiJPHY9RA/edit?usp=sharing)
