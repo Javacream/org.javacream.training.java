@@ -6,44 +6,23 @@ import java.util.concurrent.Executors;
 public class MultithreadingSample {
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-    public void doSomethingWithClassDefinition(){
+
+    public void doSomethingWithFunctionDefinition(){
         String data = "declared in doSomething";
-        class MyRunnable implements Runnable{
-
-            @Override
-            public void run() {
+        Runnable r = () -> {
                 System.out.println("in run, data=" + data);
-            }
-        }
-        MyRunnable r = new MyRunnable();
-        executorService.submit(r);
-    }
-
-
-    public void doSomethingWithAnonymousClassDefinition(){
-        String data = "declared in doSomething";
-        Runnable r = new Runnable(){
-
-            @Override
-            public void run() {
-                System.out.println("in run, data=" + data);
-            }
         };
         executorService.submit(r);
     }
-    public void doSomethingWithAnonymousClassDefinitionCompact(){
+    public void doSomethingWithFunctionDefinitionCompact(){
         String data = "declared in doSomething";
-        executorService.submit(new Runnable(){
-
-            @Override
-            public void run() {
+        executorService.submit(() -> {
                 System.out.println("in run, data=" + data);
-            }
         });
     }
 
     public static void main(String[] args) {
-        new MultithreadingSample().doSomethingWithAnonymousClassDefinitionCompact();
+        new MultithreadingSample().doSomethingWithFunctionDefinitionCompact();
     }
 
 
