@@ -24,7 +24,7 @@ public class First {
         //stringStream.forEach(System.out::println);
     }
     public void workflowCompact(Stream<String> stringStream){
-        stringStream.filter(s -> s.startsWith("E")).map(s -> s.length()).forEach(System.out::println);
+        stringStream.distinct().filter(s -> s.startsWith("E")).map(s -> s.length()).forEach(System.out::println);
     }
     public void workflowWithoutStreams(String[] strings){
         List<Integer> filteredAndTransformed = new ArrayList<>();

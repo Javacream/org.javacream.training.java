@@ -5,6 +5,16 @@ import java.util.Objects;
 public class Person {
     private String name;
     private Double weight;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    private Address address;
     //############### Generated Code Start
     public Person(String name, Double weight) {
         this.name = name;
