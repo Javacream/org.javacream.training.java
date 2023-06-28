@@ -11,6 +11,7 @@ public class Data {
 
     public static List<String> names = Arrays.asList(new String[]{"Hugo", "Emil", "Fritz", "Eduard", "Hugo"});
     public static List<List<Integer>> numbers = new ArrayList<>();
+    public static List<Double> data = Arrays.asList(new Double[]{1.5, 2.2, -0.3, 4.2, 1.0, 0.9, -4.2});
     public static List<Person> people = new ArrayList<>();
 
     static {
