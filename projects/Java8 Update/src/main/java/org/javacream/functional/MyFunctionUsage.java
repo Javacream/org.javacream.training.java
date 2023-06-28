@@ -1,32 +1,36 @@
 package org.javacream.functional;
 
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class MyFunctionUsage {
     public static void main(String[] args) {
-        MyFunction myFunction = (param1, param2) -> {
-            return param1.length() > param2;
-        };
-        MyFunction myFunctionTypeInference = (param1, param2) -> {
-            return param1.length() > param2;
-        };
-        MyFunction myFunctionTypeInferenceCompact = (param1, param2) -> param1.length() > param2;//Ohne Block: implizites return des letzten Ausdrucks
-        AnotherFunction af = (param1, param2) -> param1.length() > param2;
-        BiFunction<String, Integer, Boolean> bf = (param1, param2) -> param1.length() > param2;
-        //MyFunction f = af; Compiler Fehler, cast ist nicht möglich
-        System.out.println(myFunction.fn("Hugo", 42));
-        System.out.println(bf.apply("Hugo", 42));
-        Predicate<String> p = (s) -> s.length() == 4;
-        p.test("Hugo");
 
-        BiFunction<String, Integer, Boolean> bf2 = new BiFunction<String, Integer, Boolean>() {
+        Consumer<String> c = new Consumer<String>() {
             @Override
-            public Boolean apply(String param1, Integer param2) {
-                return param1.length() > param2;
+            public void accept(String s) {
+                System.out.println("anonymous: " + s);
             }
         };
 
+        c.accept("Hugo");
+
+        Consumer<String> lambdaC = (s) -> System.out.println("lambda: " + s);
+        lambdaC.accept("Emil");
+
+        Consumer<String> methodReferenceC = System.out::println;
+        methodReferenceC.accept("method reference: Egon");
+
+        //Predicate<String> test = System.out::println;
+        String name = "Fridolin";
+        Supplier<Integer> s = name::length;
+        System.out.println(s.get());
+
+
     }
+
+
 }
 
