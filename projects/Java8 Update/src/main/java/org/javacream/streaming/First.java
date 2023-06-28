@@ -10,7 +10,7 @@ public class First {
 
     {
         String[] names = {"Hugo", "Emil", "Fritz"};
-        workflow(Arrays.stream(names);
+        workflow(Arrays.stream(names));
     }
 
     public void workflow(Stream<String> stringStream){
