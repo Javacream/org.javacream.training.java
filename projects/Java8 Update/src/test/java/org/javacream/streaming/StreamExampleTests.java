@@ -32,6 +32,9 @@ public class StreamExampleTests {
     @Test public void testSummarizing(){
         System.out.println(Data.data.stream().collect(Collectors.summarizingDouble(d -> d)));
     }
+    @Test public void testGrouping(){
+        System.out.println(Data.people.stream().collect(Collectors.groupingBy(person -> person.getAddress().getCity())));
+    }
 
 }
 
