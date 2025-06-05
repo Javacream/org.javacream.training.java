@@ -9,11 +9,16 @@ public class PersonExample {
 		System.out.print("enter your name: ");
 		var name = scanner.nextLine();
 		System.out.print("enter your weight: ");
-		var weight = scanner.nextLine();
+		var weightString = scanner.nextLine();
+		var weight = Double.parseDouble(weightString);
 		System.out.print("enter your height: ");
-		var height = scanner.nextLine();
-		System.out.println(String.format("%s has a weight of %s and a height of %s", name, weight, height));
+		var heightString = scanner.nextLine();
+		var height = Integer.parseInt(heightString);
+		System.out.println(String.format("%s has a weight of %.2f and a height of %d", name, weight, height));
 		scanner.close();
+		weight += 1;
+		height -= 1;
+		System.out.println(String.format("%s has a weight of %.2f and a height of %d", name, weight, height));
 	}
 
 }
