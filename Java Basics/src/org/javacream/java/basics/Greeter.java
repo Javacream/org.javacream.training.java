@@ -1,10 +1,16 @@
 package org.javacream.java.basics;
 
+import java.util.Scanner;
+
 public class Greeter {
 
 	public static void main(String[] args) {
-		var lastname = "Sawitzki";
-		var firstname = "Rainer";
+		var consoleInput = new Scanner(System.in);
+		System.out.print("Enter your lastname: ");
+		var lastname = consoleInput.nextLine();
+		System.out.print("Enter your firstname: ");
+		var firstname = consoleInput.nextLine();
+		consoleInput.close();
 		var friendly = true;
 		var greeting = "";
 		if (friendly) {
@@ -13,7 +19,7 @@ public class Greeter {
 		else {
 			greeting = String.format("Good day %s", lastname);
 		}
-		System.out.println(greeting);
+		java.lang.System.out.println(greeting);
 	}
 
 }
