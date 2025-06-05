@@ -14,7 +14,8 @@ public class Greeter {
 		var friendly = consoleInput.nextLine();
 		consoleInput.close();
 		var greeting = "";
-		if (friendly.equals("y")) { // Warum funktioniert hier == nicht?
+		var compareString = "y";
+		if (friendly.equals(compareString)) { // Warum funktioniert hier == nicht?
 			greeting = String.format("Hello %s %s!", firstname, lastname);
 		}
 		else {
