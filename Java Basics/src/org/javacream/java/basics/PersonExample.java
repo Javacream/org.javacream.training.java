@@ -13,6 +13,7 @@ public class PersonExample {
 		System.out.print("enter your height: ");
 		var height = scanner.nextLine();
 		System.out.println(String.format("%s has a weight of %s and a height of %s", name, weight, height));
+		scanner.close();
 	}
 
 }
