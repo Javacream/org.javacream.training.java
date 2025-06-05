@@ -10,10 +10,11 @@ public class Greeter {
 		var lastname = consoleInput.nextLine();
 		System.out.print("Enter your firstname: ");
 		var firstname = consoleInput.nextLine();
+		System.out.print("Friendly greeting (y|n): ");
+		var friendly = consoleInput.nextLine();
 		consoleInput.close();
-		var friendly = true;
 		var greeting = "";
-		if (friendly) {
+		if (friendly.equals("y")) { // Warum funktioniert hier == nicht?
 			greeting = String.format("Hello %s %s!", firstname, lastname);
 		}
 		else {
