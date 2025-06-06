@@ -32,6 +32,14 @@ public class People {
 					namesOfPeopleTallerThan_170.add(name);				
 				}
 			}
+			var heightsOfPeopleHeavierThan_90 = new ArrayList<Integer>();
+			for (var person: people) {
+				var weight = (Double)person.get("weight");
+				if (weight > 90) {
+					var height = (Integer)person.get("height");
+					heightsOfPeopleHeavierThan_90.add(height);				
+				}
+			}
 			
 			System.out.println("done");
 		}
