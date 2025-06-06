@@ -29,7 +29,8 @@ public class People {
 				var height = (Integer)person.get("height");
 				if (height > 170) {
 					var name = (String)person.get("name");
-					namesOfPeopleTallerThan_170.add(name);				}
+					namesOfPeopleTallerThan_170.add(name);				
+				}
 			}
 			
 			System.out.println("done");
