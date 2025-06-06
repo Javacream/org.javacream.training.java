@@ -23,6 +23,15 @@ public class People {
 				person.put("height", height);
 				people.add(person);
 			}
+			// Namen der Personen für Gewicht größer 170cm
+			var namesOfPeopleTallerThan_170 = new ArrayList<String>();
+			for (var person: people) {
+				var height = (Integer)person.get("height");
+				if (height > 170) {
+					var name = (String)person.get("name");
+					namesOfPeopleTallerThan_170.add(name);				}
+			}
+			
 			System.out.println("done");
 		}
 		catch(Exception e) {
