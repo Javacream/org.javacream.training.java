@@ -2,6 +2,8 @@ package org.javacream.java.basics;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class People {
 
@@ -9,14 +11,19 @@ public class People {
 		try {
 			var pathToPeopleFile = Path.of("people.csv");
 			var rowsOfPeople = Files.readAllLines(pathToPeopleFile);
+			var people = new ArrayList<HashMap<String, Object>>();
 			for (var rowOfPerson: rowsOfPeople) {
 				var person_info = rowOfPerson.split(",");
 				var name = person_info[0];
 				var weight = Double.parseDouble(person_info[1]);
 				var height = Integer.parseInt(person_info[2]);
-				System.out.println(String.format("Gelesene Person: %s mit einem Gewicht von %.2f und einer Größe von %d", name, weight, height));
+				var person = new HashMap<String, Object>();
+				person.put("name", name);
+				person.put("weight", weight);
+				person.put("height", height);
+				people.add(person);
 			}
-			
+			System.out.println("done");
 		}
 		catch(Exception e) {
 			System.out.println("error reading input file");
