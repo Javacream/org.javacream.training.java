@@ -17,6 +17,7 @@ public class PeopleApp {
 		
 		System.out.println(person1.greet());
 		System.out.println(person2.info());
+		System.out.println(Person.getPeopleCounter());
 		System.out.println("done");
 
 	}

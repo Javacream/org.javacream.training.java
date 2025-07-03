@@ -3,6 +3,7 @@ package org.javacream.oop;
 import java.util.HashSet;
 
 public class Person {
+	private static Integer peopleCounter = 0;
 	private String lastname;
 	private String firstname;
 	private Integer height;
@@ -19,9 +20,13 @@ public class Person {
 		this.firstname = firstname;
 		this.height = height;
 		this.addresses = new HashSet<Address>();
+		Person.peopleCounter++;
 	}
 	
 	
+	public static Integer getPeopleCounter() {
+		return peopleCounter;
+	}
 	public HashSet<Address> getAddresses() {
 		return addresses;
 	}
