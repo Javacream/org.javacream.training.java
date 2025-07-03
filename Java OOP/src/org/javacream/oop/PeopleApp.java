@@ -9,7 +9,9 @@ public class PeopleApp {
 		person1.setWeight(76.6);
 		var person2 = new Person("Musterperson", "Hannah", 198);
 		person2.setWeight(79.6);
-		person1.setAddress(address1);
+		person1.addAddress(address1);
+		person1.addAddress(address2);
+		person1.addAddress(address1);
 		
 		System.out.println(person1.greet());
 		System.out.println(person2.info());

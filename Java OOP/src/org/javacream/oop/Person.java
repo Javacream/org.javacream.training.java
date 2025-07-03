@@ -1,11 +1,13 @@
 package org.javacream.oop;
 
+import java.util.HashSet;
+
 public class Person {
 	private String lastname;
 	private String firstname;
 	private Integer height;
 	private Double weight;
-	private Address address;
+	private HashSet<Address> addresses;
 	public String greet(){
 		return "Hello, my name is " + this.firstname + " " + this.lastname;
 	}
@@ -16,12 +18,19 @@ public class Person {
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.height = height;
+		this.addresses = new HashSet<Address>();
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+	
+	
+	public HashSet<Address> getAddresses() {
+		return addresses;
 	}
-	public Address getAddress() {
-		return address;
+	
+	public void addAddress(Address address) {
+		this.addresses.add(address);
+	}
+	public void removeAddress(Address address) {
+		this.addresses.remove(address);
 	}
 	public String getLastname() {
 		return lastname;
