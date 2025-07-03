@@ -12,10 +12,12 @@ public class Person {
 	public String info(){
 		return "Person(lastname=" + this.lastname + ", firstname=" + this.firstname + ", height=" + this.height + ")";
 	}
-	public Person(String lastname, String firstname, Integer height, Address address) {
+	public Person(String lastname, String firstname, Integer height) {
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.height = height;
+	}
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 	public Address getAddress() {

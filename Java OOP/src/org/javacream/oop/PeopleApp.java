@@ -5,11 +5,11 @@ public class PeopleApp {
 	public static void main(String[] args) {
 		var address1 = new Address("München", "Marienplatz");
 		var address2 = new Address("Berlin", "Alexanderplatz");
-		var person1 = new Person("Sawitzki", "Rainer", 183, address1);
+		var person1 = new Person("Sawitzki", "Rainer", 183);
 		person1.setWeight(76.6);
-		var person2 = new Person("Musterperson", "Hannah", 198, address2);
+		var person2 = new Person("Musterperson", "Hannah", 198);
 		person2.setWeight(79.6);
-		
+		person1.setAddress(address1);
 		
 		System.out.println(person1.greet());
 		System.out.println(person2.info());
