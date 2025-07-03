@@ -49,6 +49,7 @@ public class People {
 			var heightsOfPeopleLighterEquals_90 = people.stream().filter(person -> (Double) person.get("weight") <= 90)
 					.map(person -> (Integer) person.get("height")).collect(Collectors.toList());
 
+			people.stream().map(person -> (Double) person.get("weight") / ((Integer) person.get("height")*(Integer) person.get("height"))*10000).forEach(bmi -> System.out.println(bmi));
 			System.out.println("done");
 		} catch (Exception e) {
 			System.out.println("error reading input file");
