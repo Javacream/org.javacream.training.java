@@ -1,11 +1,19 @@
 package org.javacream.oop;
 
 public class Address {
-	String city;
-	String street;
+	private String city;
+	private String street;
 	
-	Address(String city, String street){
+	public Address(String city, String street){
 		this.city = city;
 		this.street = street;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public String getStreet() {
+		return street;
 	}
 }
