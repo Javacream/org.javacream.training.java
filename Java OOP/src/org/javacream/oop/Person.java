@@ -5,16 +5,21 @@ public class Person {
 	private String firstname;
 	private Integer height;
 	private Double weight;
+	private Address address;
 	public String greet(){
 		return "Hello, my name is " + this.firstname + " " + this.lastname;
 	}
 	public String info(){
 		return "Person(lastname=" + this.lastname + ", firstname=" + this.firstname + ", height=" + this.height + ")";
 	}
-	public Person(String lastname, String firstname, Integer height) {
+	public Person(String lastname, String firstname, Integer height, Address address) {
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.height = height;
+		this.address = address;
+	}
+	public Address getAddress() {
+		return address;
 	}
 	public String getLastname() {
 		return lastname;
