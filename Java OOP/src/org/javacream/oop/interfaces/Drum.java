@@ -1,6 +1,6 @@
 package org.javacream.oop.interfaces;
 
-public class Drum extends Instrument{
+public class Drum implements Instrument{
 
 	public String play() {
 		return "Wumm";

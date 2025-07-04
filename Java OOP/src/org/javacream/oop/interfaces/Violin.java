@@ -1,6 +1,6 @@
 package org.javacream.oop.interfaces;
 
-public class Violin extends Instrument {
+public class Violin implements Instrument {
 
 	@Override
 	public String play() {

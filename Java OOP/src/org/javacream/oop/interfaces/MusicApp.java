@@ -10,7 +10,7 @@ public class MusicApp {
 		//var instrument = new Instrument();
 		var singer = new Singer("Gaga", "Lady", 167);
 		var orchester = new Orchester(drum, guitar1, piano, guitar2, new Violin(), singer);
-		orchester.concert(Volume.QUIET);
+		orchester.concert(Volume.LOUD);
 	}
 
 }

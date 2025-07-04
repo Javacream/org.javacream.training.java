@@ -1,14 +1,14 @@
 package org.javacream.oop.interfaces;
 
-public abstract class Instrument {
+public interface Instrument {
 
-	public abstract String play();
+	public String play();
 	
-	public String playLoudly() {
+	default public String playLoudly() {
 		return play().toUpperCase();
 	}
 	
-	public String playQuietly() {
+	default public String playQuietly() {
 		return play().toLowerCase();
 	}
 	
