@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Orchester {
 
-	private List<Object> instruments;
-	public Orchester(Object... instruments) {
+	private List<Instrument> instruments;
+	public Orchester(Instrument... instruments) {
 		this.instruments = Arrays.asList(instruments);
 	}
 	
