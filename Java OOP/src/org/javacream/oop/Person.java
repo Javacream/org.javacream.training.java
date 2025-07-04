@@ -2,7 +2,7 @@ package org.javacream.oop;
 
 import java.util.HashSet;
 
-public class Person {
+public class Person extends Object{
 	private static Integer peopleCounter = 0;
 	private String lastname;
 	private String firstname;

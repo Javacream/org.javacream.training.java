@@ -23,7 +23,10 @@ public class PeopleApp {
 		System.out.println(person2.study());
 		System.out.println(Person.getPeopleCounter());
 		System.out.println(c.companyInfo());
+		System.out.println(person1);
+		System.out.println(person2);
 		System.out.println("done");
+		
 
 	}
 

@@ -10,5 +10,9 @@ public class Student extends Person {
 	public String study() {
 		return this.greet() + ", i study at " + this.university;
 	}
+	
+	public String toString() {
+		return "i am a student";
+	}
 
 }
