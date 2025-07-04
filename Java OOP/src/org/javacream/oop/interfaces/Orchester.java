@@ -11,8 +11,8 @@ public class Orchester {
 	}
 	
 	public void concert() {
-		for (Object instrument: this.instruments) {
-			System.out.println(instrument);
+		for (Instrument instrument: this.instruments) {
+			System.out.println(instrument.play());
 		}
 	}
 }
