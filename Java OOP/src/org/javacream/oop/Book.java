@@ -8,6 +8,10 @@ public class Book {
 	private String title;
 	private Integer pages;
 	private Double price;
+	@Override
+	public String toString() {
+		return "Book [isbn=" + isbn + ", title=" + title + ", pages=" + pages + ", price=" + price + "]";
+	}
 	public String getIsbn() {
 		return isbn;
 	}

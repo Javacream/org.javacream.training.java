@@ -31,6 +31,11 @@ public class Person extends Object{
 		return addresses;
 	}
 	
+	@Override
+	public String toString() {
+		return "Person [lastname=" + lastname + ", firstname=" + firstname + ", height=" + height + ", weight=" + weight
+				+ "]";
+	}
 	public void addAddress(Address address) {
 		this.addresses.add(address);
 	}

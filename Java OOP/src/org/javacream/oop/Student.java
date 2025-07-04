@@ -10,9 +10,12 @@ public class Student extends Person {
 	public String study() {
 		return this.greet() + ", i study at " + this.university;
 	}
-	
+
+	@Override
 	public String toString() {
-		return "i am a student";
+		return "Student [university=" + university + ", toString()=" + super.toString() + "]";
 	}
+	
+
 
 }

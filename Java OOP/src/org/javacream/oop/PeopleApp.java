@@ -25,6 +25,7 @@ public class PeopleApp {
 		System.out.println(c.companyInfo());
 		System.out.println(person1);
 		System.out.println(person2);
+		System.out.println(address1);
 		System.out.println("done");
 		
 

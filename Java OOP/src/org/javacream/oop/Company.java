@@ -3,6 +3,11 @@ package org.javacream.oop;
 import java.util.HashSet;
 
 public class Company {
+	@Override
+	public String toString() {
+		return "Company [name=" + name + "]";
+	}
+
 	private String name;
 	private HashSet<Worker> employees;
 	public Company(String name) {
