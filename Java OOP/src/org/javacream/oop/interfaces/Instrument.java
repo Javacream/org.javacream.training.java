@@ -1,8 +1,6 @@
 package org.javacream.oop.interfaces;
 
-public class Instrument {
+public abstract class Instrument {
 
-	public String play() {
-		return "";
-	}
+	public abstract String play();
 }
