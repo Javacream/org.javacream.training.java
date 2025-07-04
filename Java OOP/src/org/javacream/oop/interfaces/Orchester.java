@@ -10,9 +10,23 @@ public class Orchester {
 		this.instruments = Arrays.asList(instruments);
 	}
 	
-	public void concert() {
+	public void concert(Volume volume) {
 		for (Instrument instrument: this.instruments) {
-			System.out.println(instrument.play());
+			switch (volume){
+				case Volume.NORMAL:{
+					System.out.println(instrument.play());
+					break;
+				}
+				case Volume.LOUD:{
+					System.out.println(instrument.playLoudly());
+					break;
+				}
+				case Volume.QUIET:{
+					System.out.println(instrument.playQuietly());
+					break;
+				}
+
+			}
 		}
 	}
 }
