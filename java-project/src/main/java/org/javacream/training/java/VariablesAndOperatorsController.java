@@ -23,4 +23,10 @@ public class VariablesAndOperatorsController {
 		System.out.println(name);
 		return "OK";
 	}
+	
+	@GetMapping("/plus")
+	public String plus(Double number1, Double number2) {
+		var result = number1 - number2;
+		return "Result: " + result;
+	}
 }
