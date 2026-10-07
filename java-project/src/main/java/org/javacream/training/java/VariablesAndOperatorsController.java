@@ -26,7 +26,9 @@ public class VariablesAndOperatorsController {
 	
 	@GetMapping("/plus")
 	public String plus(Double number1, Double number2) {
-		var result = number1 - number2;
-		return "Result: " + result;
+		var outputTemplate = "Result: %.2f"; 
+		var result = number1 + number2;
+		var output = outputTemplate.formatted(result);
+		return output;
 	}
 }
