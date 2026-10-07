@@ -6,28 +6,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BmiController {
-	@Value("bmi.template") 
+	@Value("${bmi.template}") 
 	String TEMPLATE;
 	
-	@Value("bmi.underweight_limit")
+	@Value("${bmi.underweight_limit}")
 	Double UNDERWEIGHT_LIMIT;
 	
-	@Value("bmi.normalweight_limit")
+	@Value("${bmi.normalweight_limit}")
 	Double NORMALWEIGHT_LIMIT;
 	
-	@Value("bmi.overweight_limit")
+	@Value("${bmi.overweight_limit}")
 	Double OVERWEIGHT_LIMIT;
 	
-	@Value("bmi.underweight")
+	@Value("${bmi.underweight}")
 	String UNDERWEIGHT;
 	
-	@Value("bmi.normalweight")
+	@Value("${bmi.normalweight}")
 	String NORMALWEIGHT;
 	
-	@Value("bmi.overweight")
+	@Value("${bmi.overweight}")
 	String OVERWEIGHT;
 	
-	@Value("bmi.obese")
+	@Value("${bmi.obese}")
 	String OBESE;
 
 	@GetMapping("/bmi")
