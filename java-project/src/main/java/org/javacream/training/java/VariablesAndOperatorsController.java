@@ -44,7 +44,7 @@ public class VariablesAndOperatorsController {
 			System.out.println(todo);
 		}
 		
-		var secondTodo = todos.get(1);
+		var secondTodo = todos.get(1111);
 		var secondNumber = numbers.get(1);
 		System.out.println(secondTodo);
 		
