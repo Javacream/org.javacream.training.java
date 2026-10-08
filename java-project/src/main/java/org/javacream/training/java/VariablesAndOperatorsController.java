@@ -36,11 +36,25 @@ public class VariablesAndOperatorsController {
 	
 	@GetMapping("/container")
 	public String containerDemo() {
-		var name = "Hugo";
-		var age = 42;
 		List<String> todos = List.of("Essen", "Trinken", "Schlafen");
 		List<Integer> numbers = List.of(5, 7, 42, -3);
-		System.out.println(name);
+		
+		// Iteration über die Todos
+		for (var todo: todos) {
+			System.out.println(todo);
+		}
+		
+		var secondTodo = todos.get(1);
+		var secondNumber = numbers.get(1);
+		System.out.println(secondTodo);
+		
+		var sizeOfTodos = todos.size();
+		var sizeOfNumbers = numbers.size();
+		
+		for (var i = 0; i < sizeOfTodos; i++) {
+			System.out.println(todos.get(i));
+		}
+		
 		return "OK";
 	}
 }
