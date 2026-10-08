@@ -1,5 +1,6 @@
 package org.javacream.training.java;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,14 +38,13 @@ public class VariablesAndOperatorsController {
 	@GetMapping("/container")
 	public String containerDemo() {
 		List<String> todos = List.of("Essen", "Trinken", "Schlafen");
-		List<Integer> numbers = List.of(5, 7, 42, -3);
-		
+		var numbers = new ArrayList<Integer>(List.of(5, 7, 42, -3));
 		// Iteration über die Todos
 		for (var todo: todos) {
 			System.out.println(todo);
 		}
 		
-		var secondTodo = todos.get(1111);
+		var secondTodo = todos.get(1);
 		var secondNumber = numbers.get(1);
 		System.out.println(secondTodo);
 		
@@ -54,7 +54,7 @@ public class VariablesAndOperatorsController {
 		for (var i = 0; i < sizeOfTodos; i++) {
 			System.out.println(todos.get(i));
 		}
-		
+		numbers.add(4711);
 		return "OK";
 	}
 }
