@@ -24,7 +24,7 @@ public class TodosController {
 	String CLEAR_ELEMENT_TEMPLATE;
 
 	//Für einen richtigen Service FALSCH, da muss eine Datenbank zur Datenhaltung genutzt werden
-	Set<String> todos = new HashSet<>();
+	Set<Todo> todos = new HashSet<>();
 
 //	@GetMapping("/get_todo")
 //	public String retrieveToDoFor(Integer index) {
@@ -43,9 +43,10 @@ public class TodosController {
 		return "OK";
 	}
 	@GetMapping("/add_todo")
-	public String addToDo(String todo) {
-		todos.add(todo);
-		return ADD_ELEMENT_TEMPLATE.formatted(todo);
+	public String addToDo(String description, Integer priority) {
+		var newTodoEntry = new Todo(description, priority, Boolean.FALSE); 
+		todos.add(newTodoEntry);
+		return ADD_ELEMENT_TEMPLATE.formatted(newTodoEntry.description());
 		
 	}
 	@GetMapping("/clear_todos")
@@ -55,7 +56,7 @@ public class TodosController {
 		
 	}
 	@GetMapping("/all_todos")
-	public Set<String> allToDos() {
+	public Set<Todo> allToDos() {
 		return todos;
 		
 	}
