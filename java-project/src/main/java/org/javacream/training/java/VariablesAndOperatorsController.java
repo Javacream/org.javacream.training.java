@@ -1,8 +1,9 @@
 package org.javacream.training.java;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 @RestController
 public class VariablesAndOperatorsController {
 
@@ -30,5 +31,16 @@ public class VariablesAndOperatorsController {
 		var result = number1 + number2;
 		var output = outputTemplate.formatted(result);
 		return output;
+	}
+
+	
+	@GetMapping("/container")
+	public String containerDemo() {
+		var name = "Hugo";
+		var age = 42;
+		List<String> todos = List.of("Essen", "Trinken", "Schlafen");
+		List<Integer> numbers = List.of(5, 7, 42, -3);
+		System.out.println(name);
+		return "OK";
 	}
 }
