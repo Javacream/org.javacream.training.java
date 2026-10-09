@@ -1,10 +1,10 @@
 package org.javacream.training.java.books;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BookController {
-	List<Book> books = new ArrayList<>();
+	Map<String, Book> books = new HashMap<>();
 	Integer counter = 0;
 	Double DEFAULT_PRICE = 19.99;
 	Integer DEFAULT_PAGES = 0;
@@ -13,7 +13,7 @@ public class BookController {
 		counter++;
 		var newIsbn = "ISBN:" + counter;
 		var book = new Book(newIsbn, title, DEFAULT_PRICE, DEFAULT_PAGES, DEFAULT_AVAILABILITY);
-		books.add(book);
+		books.put(newIsbn, book);
 		return newIsbn;
 	}
 
