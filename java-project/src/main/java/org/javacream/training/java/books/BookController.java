@@ -1,6 +1,7 @@
 package org.javacream.training.java.books;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BookController {
@@ -19,6 +20,11 @@ public class BookController {
 	
 	public Book findByIsbn(String isbn) {
 		return books.get(isbn);
+	}
+	
+	public List<Book> findAll(){
+		var bookValues = books.values();
+		return List.copyOf(bookValues);
 	}
 
 }
