@@ -16,5 +16,9 @@ public class BookController {
 		books.put(newIsbn, book);
 		return newIsbn;
 	}
+	
+	public Book findByIsbn(String isbn) {
+		return books.get(isbn);
+	}
 
 }
