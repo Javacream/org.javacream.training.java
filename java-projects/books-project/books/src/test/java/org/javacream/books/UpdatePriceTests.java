@@ -2,11 +2,25 @@ package org.javacream.books;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
+@SpringBootTest(classes = TestConfiguration.class)
+@ActiveProfiles("test")
 public class UpdatePriceTests {
+    @Autowired
+    private BookController controller;
+
+    @BeforeEach
+    void resetBooks() {
+        controller.books.clear();
+        controller.counter = 0;
+    }
+
 	@Test
 	public void existingIsbnUpdatesPrice() {
-		var controller = new BookController();
 		var isbn = "TEST-ISBN-1";
 		controller.books.put(isbn, new Book(isbn, "Original", 19.99, 100, Boolean.FALSE));
 		var original = controller.findByIsbn(isbn);
@@ -21,7 +35,6 @@ public class UpdatePriceTests {
 
 	@Test
 	public void unknownIsbnDoesNotCreateBook() {
-		var controller = new BookController();
 		Assertions.assertFalse(controller.updatePrice("unknown", 29.95));
 		Assertions.assertTrue(controller.findAll().isEmpty());
 	}

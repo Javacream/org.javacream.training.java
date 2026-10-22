@@ -2,11 +2,25 @@ package org.javacream.books;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
+@SpringBootTest(classes = TestConfiguration.class)
+@ActiveProfiles("test")
 public class FindBooksWithTitleSmallerThan10Tests {
+    @Autowired
+    private BookController controller;
+
+    @BeforeEach
+    void resetBooks() {
+        controller.books.clear();
+        controller.counter = 0;
+    }
+
 	@Test
 	public void shortAndExactlyTenCharacterTitlesAreFound() {
-		var controller = new BookController();
 		var shortIsbn = "TEST-ISBN-1";
 		controller.books.put(shortIsbn, new Book(shortIsbn, "Short", 19.99, 100, Boolean.FALSE));
 		var boundaryIsbn = "TEST-ISBN-2";
@@ -20,7 +34,6 @@ public class FindBooksWithTitleSmallerThan10Tests {
 
 	@Test
 	public void noMatchingTitlesReturnsEmptyList() {
-		var controller = new BookController();
 		controller.books.put("TEST-ISBN-4", new Book("TEST-ISBN-4", "12345678901", 19.99, 100, Boolean.FALSE));
 		Assertions.assertTrue(controller.findBooksWithTitleSmallerThan10().isEmpty());
 	}
