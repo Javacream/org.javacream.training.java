@@ -22,7 +22,7 @@ public class CreateBookTest {
 	@Test
 	public void createBookOK() {
 		var title = "TEST_TITLE";
-		var expectedIsbnPrefix = "ISBN:";
+		var expectedIsbnPrefix = "ISBN ";
 		var createdIsbn = bookController.createBook(title);
 		Assertions.assertTrue(createdIsbn.startsWith(expectedIsbnPrefix), "generated isbn does not start with '%s', was '%s'".formatted(expectedIsbnPrefix, createdIsbn));
 	}

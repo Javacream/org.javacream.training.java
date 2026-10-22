@@ -4,18 +4,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BookController {
+	@Autowired IsbnGenerator isbnGenerator;
 	Map<String, Book> books = new HashMap<>();
 	Integer counter = 0;
 	Double DEFAULT_PRICE = 19.99;
 	Integer DEFAULT_PAGES = 0;
 	Boolean DEFAULT_AVAILABILITY = Boolean.FALSE;
 	public String createBook(String title) {
-		counter++;
-		var newIsbn = "ISBN:" + counter;
+		var newIsbn = isbnGenerator.next();
 		var book = new Book(newIsbn, title, DEFAULT_PRICE, DEFAULT_PAGES, DEFAULT_AVAILABILITY);
 		books.put(newIsbn, book);
 		return newIsbn;
