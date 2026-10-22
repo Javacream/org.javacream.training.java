@@ -13,19 +13,21 @@ public class FindIsbnsForTitleTests {
     @Autowired
     private BookController controller;
 
+    @Autowired
+    private BookRepository repository;
+
     @BeforeEach
     void resetBooks() {
-        controller.books.clear();
-        controller.counter = 0;
+        repository.deleteAll();
     }
 
 	@Test
 	public void matchingTitleFindsIsbns() {
 		var first = "TEST-ISBN-1";
-		controller.books.put(first, new Book(first, "Java Basics", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book(first, "Java Basics", 19.99, 100, Boolean.FALSE));
 		var second = "TEST-ISBN-2";
-		controller.books.put(second, new Book(second, "Java Advanced", 19.99, 100, Boolean.FALSE));
-		controller.books.put("TEST-ISBN-3", new Book("TEST-ISBN-3", "Python", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book(second, "Java Advanced", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book("TEST-ISBN-3", "Python", 19.99, 100, Boolean.FALSE));
 		var isbns = controller.findIsbnsForTitle("Java");
 		Assertions.assertEquals(2, isbns.size());
 		Assertions.assertTrue(isbns.contains(first));
@@ -34,7 +36,7 @@ public class FindIsbnsForTitleTests {
 
 	@Test
 	public void unknownTitleFindsNoIsbns() {
-		controller.books.put("TEST-ISBN-4", new Book("TEST-ISBN-4", "Java", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book("TEST-ISBN-4", "Java", 19.99, 100, Boolean.FALSE));
 		Assertions.assertTrue(controller.findIsbnsForTitle("Python").isEmpty());
 	}
 

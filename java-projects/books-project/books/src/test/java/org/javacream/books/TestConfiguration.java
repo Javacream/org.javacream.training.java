@@ -1,9 +1,14 @@
 package org.javacream.books;
 
 import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.persistence.autoconfigure.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootConfiguration
+@EnableAutoConfiguration
+@EntityScan(basePackageClasses = Book.class)
+@EnableJpaRepositories(basePackageClasses = BookRepository.class)
 @ComponentScan(basePackageClasses = BookController.class)
-public class TestConfiguration {
-}
+public class TestConfiguration { }

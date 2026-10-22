@@ -13,16 +13,18 @@ public class UpdatePagesTests {
     @Autowired
     private BookController controller;
 
+    @Autowired
+    private BookRepository repository;
+
     @BeforeEach
     void resetBooks() {
-        controller.books.clear();
-        controller.counter = 0;
+        repository.deleteAll();
     }
 
 	@Test
 	public void existingIsbnUpdatesPages() {
 		var isbn = "TEST-ISBN-1";
-		controller.books.put(isbn, new Book(isbn, "Original", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book(isbn, "Original", 19.99, 100, Boolean.FALSE));
 		var original = controller.findByIsbn(isbn);
 		Assertions.assertTrue(controller.updatePages(isbn, 250));
 		var updated = controller.findByIsbn(isbn);

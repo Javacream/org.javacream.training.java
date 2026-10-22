@@ -13,10 +13,12 @@ public class FindByIsbnTests {
     @Autowired
     private BookController controller;
 
+    @Autowired
+    private BookRepository repository;
+
     @BeforeEach
     void resetBooks() {
-        controller.books.clear();
-        controller.counter = 0;
+        repository.deleteAll();
     }
 
 	
@@ -24,7 +26,7 @@ public class FindByIsbnTests {
 	public void validIsbnFindsBook() {
 		var searchIsbn = "TEST-ISBN";
 		var expectedBook = new Book(searchIsbn, "Title", 19.99, 100, Boolean.FALSE);
-		controller.books.put(searchIsbn, expectedBook);
+		repository.save(expectedBook);
 		var searchedBook = controller.findByIsbn(searchIsbn);
 		Assertions.assertEquals(expectedBook, searchedBook);
 	}

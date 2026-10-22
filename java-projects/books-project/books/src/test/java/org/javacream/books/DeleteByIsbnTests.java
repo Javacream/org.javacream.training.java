@@ -13,18 +13,20 @@ public class DeleteByIsbnTests {
     @Autowired
     private BookController controller;
 
+    @Autowired
+    private BookRepository repository;
+
     @BeforeEach
     void resetBooks() {
-        controller.books.clear();
-        controller.counter = 0;
+        repository.deleteAll();
     }
 
 	@Test
 	public void existingIsbnDeletesBook() {
 		var deletedIsbn = "TEST-ISBN-1";
-		controller.books.put(deletedIsbn, new Book(deletedIsbn, "Delete me", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book(deletedIsbn, "Delete me", 19.99, 100, Boolean.FALSE));
 		var retainedIsbn = "TEST-ISBN-2";
-		controller.books.put(retainedIsbn, new Book(retainedIsbn, "Keep me", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book(retainedIsbn, "Keep me", 19.99, 100, Boolean.FALSE));
 		Assertions.assertTrue(controller.deleteByIsbn(deletedIsbn));
 		Assertions.assertNull(controller.findByIsbn(deletedIsbn));
 		Assertions.assertNotNull(controller.findByIsbn(retainedIsbn));
@@ -34,7 +36,7 @@ public class DeleteByIsbnTests {
 	@Test
 	public void unknownIsbnDoesNotChangeBooks() {
 		var isbn = "TEST-ISBN-3";
-		controller.books.put(isbn, new Book(isbn, "Keep me", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book(isbn, "Keep me", 19.99, 100, Boolean.FALSE));
 		Assertions.assertFalse(controller.deleteByIsbn("unknown"));
 		Assertions.assertNotNull(controller.findByIsbn(isbn));
 		Assertions.assertEquals(1, controller.findAll().size());

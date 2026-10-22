@@ -13,19 +13,21 @@ public class FindBooksWithTitleSmallerThan10Tests {
     @Autowired
     private BookController controller;
 
+    @Autowired
+    private BookRepository repository;
+
     @BeforeEach
     void resetBooks() {
-        controller.books.clear();
-        controller.counter = 0;
+        repository.deleteAll();
     }
 
 	@Test
 	public void shortAndExactlyTenCharacterTitlesAreFound() {
 		var shortIsbn = "TEST-ISBN-1";
-		controller.books.put(shortIsbn, new Book(shortIsbn, "Short", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book(shortIsbn, "Short", 19.99, 100, Boolean.FALSE));
 		var boundaryIsbn = "TEST-ISBN-2";
-		controller.books.put(boundaryIsbn, new Book(boundaryIsbn, "1234567890", 19.99, 100, Boolean.FALSE));
-		controller.books.put("TEST-ISBN-3", new Book("TEST-ISBN-3", "12345678901", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book(boundaryIsbn, "1234567890", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book("TEST-ISBN-3", "12345678901", 19.99, 100, Boolean.FALSE));
 		var result = controller.findBooksWithTitleSmallerThan10();
 		Assertions.assertEquals(2, result.size());
 		Assertions.assertTrue(result.stream().anyMatch(book -> book.isbn().equals(shortIsbn)));
@@ -34,7 +36,7 @@ public class FindBooksWithTitleSmallerThan10Tests {
 
 	@Test
 	public void noMatchingTitlesReturnsEmptyList() {
-		controller.books.put("TEST-ISBN-4", new Book("TEST-ISBN-4", "12345678901", 19.99, 100, Boolean.FALSE));
+		repository.save(new Book("TEST-ISBN-4", "12345678901", 19.99, 100, Boolean.FALSE));
 		Assertions.assertTrue(controller.findBooksWithTitleSmallerThan10().isEmpty());
 	}
 

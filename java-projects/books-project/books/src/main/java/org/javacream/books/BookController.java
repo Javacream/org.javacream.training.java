@@ -1,74 +1,68 @@
 package org.javacream.books;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BookController {
-	Map<String, Book> books = new HashMap<>();
-	Integer counter = 0;
-	Double DEFAULT_PRICE = 19.99;
-	Integer DEFAULT_PAGES = 0;
-	Boolean DEFAULT_AVAILABILITY = Boolean.FALSE;
-	public String createBook(String title) {
-		counter++;
-		var newIsbn = "ISBN:" + counter;
-		var book = new Book(newIsbn, title, DEFAULT_PRICE, DEFAULT_PAGES, DEFAULT_AVAILABILITY);
-		books.put(newIsbn, book);
-		return newIsbn;
-	}
-	
-	public Book findByIsbn(String isbn) {
-		return books.get(isbn);
-	}
-	
-	public List<Book> findAll(){
-		var bookValues = books.values();
-		return List.copyOf(bookValues);
-	}
+    private final BookRepository repository;
+    private static final Double DEFAULT_PRICE = 19.99;
+    private static final Integer DEFAULT_PAGES = 0;
+    private static final Boolean DEFAULT_AVAILABILITY = Boolean.FALSE;
 
+    public BookController(BookRepository repository) { this.repository = repository; }
 
-	public List<Book> findByTitle(String title){
-		return books.values().stream().filter(b -> b.title().contains(title)).toList();
-	}
+    public String createBook(String title) {
+        String isbn = "ISBN:" + UUID.randomUUID();
+        repository.save(new Book(isbn, title, DEFAULT_PRICE, DEFAULT_PAGES, DEFAULT_AVAILABILITY));
+        return isbn;
+    }
 
-	public List<String> findIsbnsForTitle(String title){
-		return books.values().stream().filter(b -> b.title().contains(title)).map(b -> b.isbn()).toList();
-	}
-	
-	public List<Book> findBooksWithTitleSmallerThan10(){
-		return books.values().stream().filter(b -> b.title().length() <= 10).toList();
-	}
+    public Book findByIsbn(String isbn) { return repository.findById(isbn).orElse(null); }
 
+    public List<Book> findAll() { return repository.findAll(); }
 
-	public Boolean updateTitle(String isbn, String newTitle) {
-		var updated = books.computeIfPresent(isbn, (key, book) ->
-			new Book(book.isbn(), newTitle, book.price(), book.pages(), book.available()));
-		return updated != null;
-	}
+    public List<Book> findByTitle(String title) { return repository.findByTitleContaining(title); }
 
-	public Boolean updatePrice(String isbn, Double newPrice) {
-		var updated = books.computeIfPresent(isbn, (key, book) ->
-			new Book(book.isbn(), book.title(), newPrice, book.pages(), book.available()));
-		return updated != null;
-	}
+    public List<String> findIsbnsForTitle(String title) {
+        return repository.findByTitleContaining(title).stream().map(Book::isbn).toList();
+    }
 
-	public Boolean updatePages(String isbn, Integer newPages) {
-		var updated = books.computeIfPresent(isbn, (key, book) ->
-			new Book(book.isbn(), book.title(), book.price(), newPages, book.available()));
-		return updated != null;
-	}
+    public List<Book> findBooksWithTitleSmallerThan10() {
+        return repository.findAll().stream().filter(b -> b.title().length() <= 10).toList();
+    }
 
-	public Boolean updateAvailability(String isbn, Boolean newAvailability) {
-		var updated = books.computeIfPresent(isbn, (key, book) ->
-			new Book(book.isbn(), book.title(), book.price(), book.pages(), newAvailability));
-		return updated != null;
-	}
+    @Transactional
+    protected Boolean update(String isbn, Consumer<Book> change) {
+        var book = repository.findById(isbn);
+        if (book.isEmpty()) return Boolean.FALSE;
+        change.accept(book.get());
+        repository.save(book.get());
+        return Boolean.TRUE;
+    }
 
-	public Boolean deleteByIsbn(String isbn) {
-		return books.remove(isbn) != null;
-	}
+    public Boolean updateTitle(String isbn, String newTitle) {
+        return update(isbn, b -> b.setTitle(newTitle));
+    }
 
+    public Boolean updatePrice(String isbn, Double newPrice) {
+        return update(isbn, b -> b.setPrice(newPrice));
+    }
+
+    public Boolean updatePages(String isbn, Integer newPages) {
+        return update(isbn, b -> b.setPages(newPages));
+    }
+
+    public Boolean updateAvailability(String isbn, Boolean newAvailability) {
+        return update(isbn, b -> b.setAvailable(newAvailability));
+    }
+
+    public Boolean deleteByIsbn(String isbn) {
+        if (!repository.existsById(isbn)) return Boolean.FALSE;
+        repository.deleteById(isbn);
+        return Boolean.TRUE;
+    }
 }
