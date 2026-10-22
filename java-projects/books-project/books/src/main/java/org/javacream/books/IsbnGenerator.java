@@ -1,12 +1,15 @@
 
 package org.javacream.books;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class IsbnGenerator {
 
-    private String prefix = "979";
+	@Value("${isbn.prefix}")
+    private String prefix;
+	@Value("${isbn.countryCode}")
     private String countryCode = "9";
 
     public String next() {
