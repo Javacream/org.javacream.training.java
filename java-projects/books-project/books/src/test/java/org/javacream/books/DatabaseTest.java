@@ -16,4 +16,12 @@ public class DatabaseTest {
 	@Test public void checkDatabaseAvailable(){
 		Assertions.assertNotNull(dataSource);
 	}
+	@Test public void completelyOutdatedDataAccess() throws Exception{
+		var connection = dataSource.getConnection();
+		var statement = connection.createStatement();
+		var result = statement.executeQuery("select * from messages");
+		while(result.next()) {
+			System.out.println(result.getString(1));
+		}
+	}
 }
