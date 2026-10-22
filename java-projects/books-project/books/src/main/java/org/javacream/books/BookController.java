@@ -3,7 +3,9 @@ package org.javacream.books;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BookController {
 	Map<String, Book> books = new HashMap<>();
 	Integer counter = 0;
